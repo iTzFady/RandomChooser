@@ -1,0 +1,45 @@
+﻿<Page x:Class="RandomChooser.Pages.Settings"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:namespace="clr-namespace:RandomChooser"
+      xmlns:local="clr-namespace:RandomChooser.Pages"
+      xmlns:customControls="clr-namespace:RandomChooser.Controls"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="1000"
+      Title="Settings"
+      Background="LightGray">
+
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" Content="Settings" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="80"/>
+        <StackPanel Grid.Row="1">
+            <customControls:Textfield TopText="Min" Grid.Row="2" HorizontalAlignment="Left" Width="800" Margin="10 10 10 10"/>
+            <customControls:Textfield TopText="Max" Grid.Row="3" HorizontalAlignment="Right" Width="800" Margin="10 10 10 10"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <customControls:SunMoonButton Width="200" Height="100" Margin="20"/>
+            <customControls:TextToggleButton Width="200" Height="100" Margin="20"/>
+        </StackPanel>
+        <customControls:RoundedButton Background="Black" 
+                                      Width="200" 
+                                      Height="60" 
+                                      VerticalAlignment="Center" 
+                                       HorizontalAlignment="Center" Corner="15" 
+                                      Content="Start"
+                                      Foreground="White"
+                                      OnHoverBackground="White"
+                                      OnHoverTextColor="Black"
+                                      FontSize="20"
+                                      FontFamily="Calibri Light"
+                                      Grid.Row="3"
+                                      />
+    </Grid>
+</Page>

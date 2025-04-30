@@ -1,0 +1,42 @@
+﻿<Window x:Class="RandomChooser.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RandomChooser"
+        xmlns:customControls="clr-namespace:RandomChooser.Controls"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="1000" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/Assets/Images/dice.png"
+        Background="LightGray">
+
+    <Grid>
+        <Grid.RowDefinitions>
+                <RowDefinition Height="30*" Name="Icon"/>
+                <RowDefinition Height="15*" Name="ApplicationName"/>
+                <RowDefinition Height="40*" Name="RandomRange"/>
+                <RowDefinition Height="15*" Name="Button"/>
+            </Grid.RowDefinitions>
+        <Image x:Name="Dice" Source="/Assets/Images/dice.png" Grid.Row="0" VerticalAlignment="Bottom"/>
+        <customControls:SunMoonButton Width="200" Height="100" Grid.Row="2"/>
+            <Label
+            Content="Random Chooser" 
+            x:Name="AppName" 
+            Grid.Row="1" 
+            FontSize="50"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            FontWeight="SemiBold"
+            FontFamily="Sans"
+            Foreground="white"/>
+        <customControls:RoundedButton Background="Black" Width="200" Height="60" VerticalAlignment="Center" HorizontalAlignment="Center" Corner="15" 
+                                      Content="Start"
+                                      Foreground="White"
+                                      OnHoverBackground="White"
+                                      OnHoverTextColor="Black"
+                                      FontSize="20"
+                                      FontFamily="Calibri Light"
+                                      Grid.Row="3" Click="RoundedButton_Click"
+                                      >
+        </customControls:RoundedButton>
+    </Grid>
+</Window>
