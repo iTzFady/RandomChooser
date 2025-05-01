@@ -28,7 +28,6 @@
                FontWeight="DemiBold"
                FontSize="23"
                Margin="20 0 0 0"
-               Content="Test"
                >
             <Label.BitmapEffect>
                 <DropShadowBitmapEffect Color="Black" 
@@ -38,7 +37,7 @@
                                         Softness="9"/>
             </Label.BitmapEffect>
         </Label>
-        <TextBox Grid.Row="1" 
+        <TextBox x:Name="textBox" Grid.Row="1" 
                  PreviewTextInput="NumberValidation" 
                  DataObject.Pasting="TextBox_Pasting"
                  TextAlignment="Center"
@@ -47,7 +46,7 @@
                  FontFamily="Sans"
                  MaxLength="4"
                  HorizontalScrollBarVisibility="Disabled"
-                 VerticalScrollBarVisibility="Disabled"
+                 VerticalScrollBarVisibility="Disabled" BindingGroup="{Binding Text, ElementName=textBox}"
                  />
     </Grid>
 </UserControl>

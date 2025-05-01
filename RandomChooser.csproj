@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\Fonts\Font Awesome 6 Free Regular.otf" />
     <None Remove="Assets\Images\2monitors.png" />
     <None Remove="Assets\Images\background.jpg" />
     <None Remove="Assets\Images\ButtonAnimationFrames\Frame-1.png" />
@@ -23,6 +24,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Assets\Fonts\Font Awesome 6 Free Regular.otf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Fonts\Font Awesome 6 Free Solid.otf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Assets\Images\ButtonAnimationFrames\Frame-1.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>

@@ -5,38 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RandomChooser"
         xmlns:customControls="clr-namespace:RandomChooser.Controls"
+        xmlns:Pages="clr-namespace:RandomChooser.Pages"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="1000" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/Assets/Images/dice.png"
+        Title="MainWindow" Height="800" Width="1200" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/Assets/Images/dice.png"
         Background="LightGray">
 
     <Grid>
-        <Grid.RowDefinitions>
-                <RowDefinition Height="30*" Name="Icon"/>
-                <RowDefinition Height="15*" Name="ApplicationName"/>
-                <RowDefinition Height="40*" Name="RandomRange"/>
-                <RowDefinition Height="15*" Name="Button"/>
-            </Grid.RowDefinitions>
-        <Image x:Name="Dice" Source="/Assets/Images/dice.png" Grid.Row="0" VerticalAlignment="Bottom"/>
-        <customControls:SunMoonButton Width="200" Height="100" Grid.Row="2"/>
-            <Label
-            Content="Random Chooser" 
-            x:Name="AppName" 
-            Grid.Row="1" 
-            FontSize="50"
-            VerticalAlignment="Center"
-            HorizontalAlignment="Center"
-            FontWeight="SemiBold"
-            FontFamily="Sans"
-            Foreground="white"/>
-        <customControls:RoundedButton Background="Black" Width="200" Height="60" VerticalAlignment="Center" HorizontalAlignment="Center" Corner="15" 
-                                      Content="Start"
-                                      Foreground="White"
-                                      OnHoverBackground="White"
-                                      OnHoverTextColor="Black"
-                                      FontSize="20"
-                                      FontFamily="Calibri Light"
-                                      Grid.Row="3" Click="RoundedButton_Click"
-                                      >
-        </customControls:RoundedButton>
+        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>

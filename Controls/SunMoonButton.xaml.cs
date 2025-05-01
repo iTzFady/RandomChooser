@@ -27,6 +27,24 @@ namespace RandomChooser.Controls
             InitializeComponent();
         }
 
+        public bool Theme
+        {
+            get { return (bool)GetValue(StateProperty); }
+            set { SetValue(StateProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for State.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty StateProperty =
+            DependencyProperty.Register("Theme", typeof(bool), typeof(SunMoonButton), new PropertyMetadata(true, ButtonValueChanged));
+
+        private static void ButtonValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var control = d as SunMoonButton;
+            control.ThemeSwitch.IsChecked = (bool)e.NewValue;
+        }
+
+
+
         private void ThemeSwitch_Checked(object sender, RoutedEventArgs e)
         {
             InnerButton.HorizontalAlignment = HorizontalAlignment.Right;

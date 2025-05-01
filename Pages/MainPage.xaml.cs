@@ -12,29 +12,27 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Configuration;
-
 
 namespace RandomChooser.Pages
 {
     /// <summary>
-    /// Interaction logic for Settings.xaml
+    /// Interaction logic for MainPage.xaml
     /// </summary>
-    public partial class Settings : Page
+    public partial class MainPage : Page
     {
-        Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-        public Settings()
+        public MainPage()
         {
             InitializeComponent();
-            var SettingsSection = config.GetSection("RandomRange");
-
-            this.DataContext = SettingsSection;
         }
 
         private void RoundedButton_Click(object sender, RoutedEventArgs e)
         {
-            config.Save();
-            //NavigationService.GoBack();
+            NavigationService.Navigate(new RandomNumberPage());
+        }
+
+        private void SettingsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Settings());
         }
     }
 }

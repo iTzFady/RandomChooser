@@ -1,0 +1,72 @@
+﻿<Page x:Class="RandomChooser.Pages.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:RandomChooser.Pages" 
+      xmlns:customControls="clr-namespace:RandomChooser.Controls"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="1200"
+      Title="MainPage" 
+      Background="LightGray">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Image x:Name="Dice" Source="/Assets/Images/dice.png" Grid.Row="0" VerticalAlignment="Bottom" Width="250">
+                <Image.Effect>
+                    <DropShadowEffect 
+                                        Color="Black"
+                                        Direction="320"
+                                        ShadowDepth="3"
+                                        Opacity=".9"
+                                        />
+                </Image.Effect>
+            </Image>
+            <Label
+            Content="Random Chooser" 
+            x:Name="AppName" 
+            Grid.Row="1" 
+            FontSize="45"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            FontWeight="Bold"
+            FontFamily="Sans"
+            Foreground="Black">
+                <Label.BitmapEffect>
+                    <DropShadowBitmapEffect
+                                        Color="Gray"
+                                        Direction="320"
+                                        ShadowDepth="3"
+                                        Opacity=".9"
+                                        Softness="10"
+                    />
+                </Label.BitmapEffect>
+            </Label>
+        </StackPanel>
+        <customControls:RoundedButton Background="Black" Width="450" Height="60" VerticalAlignment="Center" HorizontalAlignment="Center" Corner="15" 
+                                      Content="Start"
+                                      Foreground="White"
+                                      OnHoverBackground="White"
+                                      OnHoverTextColor="Black"
+                                      FontSize="30"
+                                      FontFamily="Calibri"
+                                      Grid.Column="1" 
+                                      Click="RoundedButton_Click" FontWeight="Bold"
+                                      />
+        <customControls:RoundedButton Background="Black" Width="80" Height="80" VerticalAlignment="Bottom" HorizontalAlignment="Right" Corner="20" 
+                                      Content="&#xf013;"
+                                      Foreground="White"
+                                      OnHoverBackground="White"
+                                      OnHoverTextColor="Black"
+                                      FontSize="26"
+                                      FontFamily="/Assets/Fonts/#Font Awesome 6 Free Solid"
+                                      Grid.Column="1" 
+                                      FontWeight="Bold"
+                                      Margin="10" Click="SettingsBtn_Click"
+                                      />
+    </Grid>
+</Page>

@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using RandomChooser.Pages;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -19,12 +20,7 @@ namespace RandomChooser
         public MainWindow()
         {
             InitializeComponent();
-        }
-
-        private void RoundedButton_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService nav = NavigationService.GetNavigationService(this);
-            nav.Navigate(new Uri("Pages/Settings.xaml", UriKind.Relative));
+            MainFrame.Navigate(new MainPage());
         }
     }
 }

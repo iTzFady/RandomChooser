@@ -26,6 +26,24 @@ namespace RandomChooser.Controls
             InitializeComponent();
         }
 
+
+
+        public bool State
+        {
+            get { return (bool)GetValue(StateProperty); }
+            set { SetValue(StateProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for State.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty StateProperty =
+            DependencyProperty.Register("State", typeof(bool), typeof(TextToggleButton), new PropertyMetadata(true , ButtonValueChanged));
+
+        private static void ButtonValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var control =  d as TextToggleButton;
+            control.DisplayModeSwitch.IsChecked = (bool)e.NewValue;
+        }
+
         private void DisplayModeSwitch_Checked(object sender, RoutedEventArgs e)
         {
             Holder.FlowDirection = FlowDirection.RightToLeft;

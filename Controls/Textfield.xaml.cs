@@ -43,6 +43,26 @@ namespace RandomChooser.Controls
             }
         }
 
+
+
+        public string TextFieldText
+        {
+            get { return (string)GetValue(TextFieldTextProperty); }
+            set { SetValue(TextFieldTextProperty, value); }
+        }
+        private static void ValueChangedMain(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var control = d as Textfield;
+            control.textBox.Text = e.NewValue.ToString();
+        }
+
+        // Using a DependencyProperty as the backing store for TextFieldText.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty TextFieldTextProperty =
+            DependencyProperty.Register("TextFieldText", typeof(string), typeof(Textfield), new PropertyMetadata(string.Empty , ValueChangedMain));
+
+
+
+
         private void NumberValidation(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex("[^0-9]+");

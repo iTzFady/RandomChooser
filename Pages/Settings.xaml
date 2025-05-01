@@ -3,13 +3,12 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:namespace="clr-namespace:RandomChooser"
-      xmlns:local="clr-namespace:RandomChooser.Pages"
-      xmlns:customControls="clr-namespace:RandomChooser.Controls"
+      xmlns:local="clr-namespace:RandomChooser.Pages" xmlns:customControls="clr-namespace:RandomChooser.Controls"
       mc:Ignorable="d" 
-      d:DesignHeight="600" d:DesignWidth="1000"
-      Title="Settings"
-      Background="LightGray">
+      d:DesignHeight="800" d:DesignWidth="1200"
+      Background="LightGray"
+      Title="Settings">
+
 
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
         <Grid.RowDefinitions>
@@ -19,27 +18,40 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <Label Grid.Row="0" Content="Settings" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="80"/>
-        <StackPanel Grid.Row="1">
-            <customControls:Textfield TopText="Min" Grid.Row="2" HorizontalAlignment="Left" Width="800" Margin="10 10 10 10"/>
-            <customControls:Textfield TopText="Max" Grid.Row="3" HorizontalAlignment="Right" Width="800" Margin="10 10 10 10"/>
+        <Label Grid.Row="0" Content="Settings" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="80">
+            <Label.BitmapEffect>
+                <DropShadowBitmapEffect Color="Black"
+                                        Direction="320"
+                                        ShadowDepth="3"
+                                        Opacity=".9"
+                                        Softness="10"
+                                        />
+            </Label.BitmapEffect>
+        </Label>
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <customControls:Textfield TextFieldText="{Binding MinRange}" TopText="Min" Grid.Row="2" HorizontalAlignment="Left" Width="800" Margin="10 10 10 10"/>
+            <customControls:Textfield TextFieldText="{Binding MaxRange}" TopText="Max" Grid.Row="3" HorizontalAlignment="Right" Width="800" Margin="10 10 10 10"/>
         </StackPanel>
         <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <customControls:SunMoonButton Width="200" Height="100" Margin="20"/>
-            <customControls:TextToggleButton Width="200" Height="100" Margin="20"/>
+            <customControls:SunMoonButton Theme="{Binding Theme}" Width="200" Height="100" Margin="20"/>
+            <customControls:TextToggleButton State="{Binding DisplayMode}" Width="200" Height="100" Margin="20"/>
         </StackPanel>
         <customControls:RoundedButton Background="Black" 
                                       Width="200" 
                                       Height="60" 
                                       VerticalAlignment="Center" 
-                                       HorizontalAlignment="Center" Corner="15" 
-                                      Content="Start"
+                                      HorizontalAlignment="Center" 
+                                      Corner="15" 
+                                      Content="Done"
                                       Foreground="White"
                                       OnHoverBackground="White"
                                       OnHoverTextColor="Black"
                                       FontSize="20"
-                                      FontFamily="Calibri Light"
+                                      FontFamily="Calibri"
+                                      FontWeight="Bold"
                                       Grid.Row="3"
+                                      Margin="20" Click="RoundedButton_Click"
                                       />
     </Grid>
+
 </Page>

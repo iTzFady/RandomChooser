@@ -12,29 +12,23 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Configuration;
-
 
 namespace RandomChooser.Pages
 {
     /// <summary>
-    /// Interaction logic for Settings.xaml
+    /// Interaction logic for RandomNumberPage.xaml
     /// </summary>
-    public partial class Settings : Page
+    public partial class RandomNumberPage : Page
     {
-        Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-        public Settings()
+        RandomGen _gen = new RandomGen();
+        public RandomNumberPage()
         {
             InitializeComponent();
-            var SettingsSection = config.GetSection("RandomRange");
-
-            this.DataContext = SettingsSection;
         }
 
         private void RoundedButton_Click(object sender, RoutedEventArgs e)
         {
-            config.Save();
-            //NavigationService.GoBack();
+            chosenNumber.Text = _gen.Next(1, 100).ToString();
         }
     }
 }
