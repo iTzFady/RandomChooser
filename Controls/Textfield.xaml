@@ -46,7 +46,8 @@
                  FontFamily="Sans"
                  MaxLength="4"
                  HorizontalScrollBarVisibility="Disabled"
-                 VerticalScrollBarVisibility="Disabled" BindingGroup="{Binding Text, ElementName=textBox}"
+                 VerticalScrollBarVisibility="Disabled" 
+                 Text="{Binding TextFieldText, Mode=TwoWay, RelativeSource={RelativeSource AncestorType=UserControl}}"
                  />
     </Grid>
 </UserControl>

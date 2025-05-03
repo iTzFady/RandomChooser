@@ -158,7 +158,12 @@
 
     </UserControl.Resources>
     <Grid>
-        <ToggleButton x:Name="ThemeSwitch" Style="{DynamicResource SunMoonStyle}" BorderBrush="#FFCACACA" BorderThickness="3,3,3,3" Checked="ThemeSwitch_Checked" Unchecked="ThemeSwitch_Unchecked">
+        <ToggleButton x:Name="ThemeSwitch" Style="{DynamicResource SunMoonStyle}" 
+                      BorderBrush="#FFCACACA" 
+                      BorderThickness="3,3,3,3" 
+                      Checked="ThemeSwitch_Checked" 
+                      Unchecked="ThemeSwitch_Unchecked" 
+                      IsChecked="{Binding Theme}">
                 <ToggleButton.Background>
                 <ImageBrush ImageSource="/Assets/Images/ButtonAnimationFrames/Sunny.jpg"/>
             </ToggleButton.Background>

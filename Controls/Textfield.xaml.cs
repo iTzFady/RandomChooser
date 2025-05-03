@@ -53,7 +53,7 @@ namespace RandomChooser.Controls
         private static void ValueChangedMain(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var control = d as Textfield;
-            control.textBox.Text = e.NewValue.ToString();
+            //control.textBox.Text = e.NewValue.ToString();
         }
 
         // Using a DependencyProperty as the backing store for TextFieldText.  This enables animation, styling, binding, etc...

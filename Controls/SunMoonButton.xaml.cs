@@ -40,10 +40,7 @@ namespace RandomChooser.Controls
         private static void ButtonValueChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var control = d as SunMoonButton;
-            control.ThemeSwitch.IsChecked = (bool)e.NewValue;
         }
-
-
 
         private void ThemeSwitch_Checked(object sender, RoutedEventArgs e)
         {

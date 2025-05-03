@@ -26,6 +26,13 @@ namespace RandomChooser.Pages
         public Settings()
         {
             InitializeComponent();
+
+
+            if (config.Sections["RandomRange"] is null)
+            {
+                config.Sections.Add("RandomRange", new RandomRange());
+            }
+
             var SettingsSection = config.GetSection("RandomRange");
 
             this.DataContext = SettingsSection;
@@ -34,6 +41,10 @@ namespace RandomChooser.Pages
         private void RoundedButton_Click(object sender, RoutedEventArgs e)
         {
             config.Save();
+            System.Diagnostics.Debug.WriteLine(MinValue.TextFieldText);
+            System.Diagnostics.Debug.WriteLine(MaxValue.TextFieldText);
+            System.Diagnostics.Debug.WriteLine(MinValue.textBox.Text);
+            System.Diagnostics.Debug.WriteLine(MaxValue.textBox.Text);
             //NavigationService.GoBack();
         }
     }

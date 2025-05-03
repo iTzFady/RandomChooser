@@ -29,8 +29,8 @@
             </Label.BitmapEffect>
         </Label>
         <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <customControls:Textfield TextFieldText="{Binding MinRange}" TopText="Min" Grid.Row="2" HorizontalAlignment="Left" Width="800" Margin="10 10 10 10"/>
-            <customControls:Textfield TextFieldText="{Binding MaxRange}" TopText="Max" Grid.Row="3" HorizontalAlignment="Right" Width="800" Margin="10 10 10 10"/>
+            <customControls:Textfield x:Name="MinValue" TextFieldText="{Binding MinRange , Mode=TwoWay}" TopText="Min" Grid.Row="2" HorizontalAlignment="Left" Width="800" Margin="10 10 10 10"/>
+            <customControls:Textfield x:Name="MaxValue" TextFieldText="{Binding MaxRange , Mode=TwoWay}" TopText="Max" Grid.Row="3" HorizontalAlignment="Right" Width="800" Margin="10 10 10 10"/>
         </StackPanel>
         <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
             <customControls:SunMoonButton Theme="{Binding Theme}" Width="200" Height="100" Margin="20"/>
