@@ -12,10 +12,10 @@
         Title="Extended" Height="800" Width="1200">
 
     <Grid>
-        <StackPanel Margin="0">
-            <Label Grid.Row="0" Content="The Random Number is" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="60" Margin="80" FontFamily="Calibri" FontWeight="Bold"/>
-            <TextBlock Grid.Row="1" x:Name="Number" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="250"
-                   Text="0" FontWeight="Bold" Margin="0"/>
+        <StackPanel Margin="50">
+            <Label Grid.Row="0" Content="The Winner is" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="60" FontFamily="Calibri" FontWeight="Bold"/>
+            <TextBlock Grid.Row="1" x:Name="Number" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="400"
+                   Text="0" FontWeight="Bold"/>
         </StackPanel>
     </Grid>
 </Window>

@@ -16,7 +16,6 @@
     <None Remove="Assets\Images\ButtonAnimationFrames\Frame-1.png" />
     <None Remove="Assets\Images\ButtonAnimationFrames\Frame-2.png" />
     <None Remove="Assets\Images\dice.png" />
-    <None Remove="Assets\Images\dup_monitor.png" />
     <None Remove="Assets\Images\monitor.png" />
     <None Remove="Assets\Images\moon.png" />
     <None Remove="Assets\Images\night-sky.jpg" />
@@ -24,14 +23,7 @@
     <None Remove="Assets\Images\Sunny.jpg" />
   </ItemGroup>
 
-  <ItemGroup>
-    <COMReference Include="{215d64d2-031c-33c7-96e3-61794cd1ee61}">
-      <WrapperTool>tlbimp</WrapperTool>
-      <VersionMinor>4</VersionMinor>
-      <VersionMajor>2</VersionMajor>
-      <Guid>215d64d2-031c-33c7-96e3-61794cd1ee61</Guid>
-    </COMReference>
-  </ItemGroup>
+
 
   <ItemGroup>
     <Resource Include="Assets\Fonts\Font Awesome 6 Free Regular.otf">
@@ -59,12 +51,6 @@
 
   <ItemGroup>
     <Resource Include="Assets\Images\2monitors.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Assets\Images\dup_monitor.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Assets\Images\extended_monitors.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Images\monitor.png">

@@ -19,6 +19,7 @@ namespace RandomChooser.Pages
         RandomGen _gen = new RandomGen();
         Extended extended = new Extended();
         readonly Window _mainWindow;
+        Window _extended_window;
         public RandomNumberPage()
         {
             _min = SettingsSection.MinRange;
@@ -40,7 +41,28 @@ namespace RandomChooser.Pages
         private void RoundedButton_Click(object sender, RoutedEventArgs e)
         {
             chosenNumber.Text = _gen.Next(_min, _max).ToString();
-            extended.UpdateNumber(chosenNumber.Text);
+            if (SettingsSection.DisplayMode) {
+                extended.UpdateNumber(chosenNumber.Text);
+            }
+        }
+
+        private void ExitBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void HomeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (SettingsSection.DisplayMode)
+            {
+                _extended_window = Window.GetWindow(extended);
+                _extended_window.Close();
+            }
+            else {
+                _mainWindow.WindowStyle = WindowStyle.SingleBorderWindow;
+                _mainWindow.WindowState = WindowState.Normal;
+            }
+            NavigationService.GoBack();
         }
     }
 }

@@ -8,13 +8,6 @@
              d:DesignHeight="225" d:DesignWidth="800"
              Padding="2">
     <Grid>
-        <Grid.BitmapEffect>
-            <DropShadowBitmapEffect Color="Black" 
-                                    Direction = "320" 
-                                    ShadowDepth="15" 
-                                    Opacity=".5" 
-                                    Softness="9"/>
-        </Grid.BitmapEffect>
         <Grid.RowDefinitions>
             <RowDefinition Height="30*" />
             <RowDefinition Height="70*"/>
@@ -24,7 +17,7 @@
                VerticalAlignment="Center" 
                FontFamily="Sans" 
                HorizontalContentAlignment="Left"
-               Foreground="White" 
+               Foreground="Black" 
                FontWeight="DemiBold"
                FontSize="23"
                Margin="20 0 0 0"
@@ -32,9 +25,9 @@
             <Label.BitmapEffect>
                 <DropShadowBitmapEffect Color="Black" 
                                         Direction="320" 
-                                        ShadowDepth="3" 
+                                        ShadowDepth="1" 
                                         Opacity=".1" 
-                                        Softness="9"/>
+                                        Softness="5"/>
             </Label.BitmapEffect>
         </Label>
         <TextBox x:Name="textBox" Grid.Row="1" 
@@ -45,9 +38,12 @@
                  FontSize="50"
                  FontFamily="Sans"
                  MaxLength="4"
+                 Background="LightGray"
                  HorizontalScrollBarVisibility="Disabled"
                  VerticalScrollBarVisibility="Disabled" 
                  Text="{Binding TextFieldText, Mode=TwoWay, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                 />
+                 BorderThickness="0,0,0,2" BorderBrush="#FF4E4F50"
+                 >
+        </TextBox>
     </Grid>
 </UserControl>
