@@ -1,18 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Configuration;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Runtime.InteropServices;
+using WpfScreenHelper;
+using System.Diagnostics;
+using RandomChooser.CustomWindow;
 
 namespace RandomChooser.Pages
 {
@@ -28,6 +21,7 @@ namespace RandomChooser.Pages
 
         private void RoundedButton_Click(object sender, RoutedEventArgs e)
         {
+            ConfigurationManager.RefreshSection("RandomRange");
             NavigationService.Navigate(new RandomNumberPage());
         }
 

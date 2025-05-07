@@ -16,6 +16,7 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
         <Label Grid.Row="0" Content="Settings" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="80">
@@ -37,6 +38,7 @@
             <customControls:TextToggleButton State="{Binding DisplayMode}" Width="200" Height="100" Margin="20"/>
         </StackPanel>
         <customControls:RoundedButton Background="Black" 
+                                      x:Name="ConfirmBtn"
                                       Width="200" 
                                       Height="60" 
                                       VerticalAlignment="Center" 
@@ -52,6 +54,12 @@
                                       Grid.Row="3"
                                       Margin="20" Click="RoundedButton_Click"
                                       />
+        <TextBlock Grid.Row="4"
+                   x:Name="Current_State"
+                   FontSize="40"
+                   FontFamily="Calibri"
+                   TextAlignment="Center"
+                   Margin="10"/>
     </Grid>
 
 </Page>

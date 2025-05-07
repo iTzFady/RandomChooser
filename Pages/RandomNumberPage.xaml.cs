@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using RandomChooser.CustomWindow;
+using System.Configuration;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using WpfScreenHelper;
+
 
 namespace RandomChooser.Pages
 {
@@ -20,15 +13,34 @@ namespace RandomChooser.Pages
     /// </summary>
     public partial class RandomNumberPage : Page
     {
+        int _min = 0;
+        int _max = 0;
+        RandomRange? SettingsSection = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None).GetSection("RandomRange") as RandomChooser.RandomRange;
         RandomGen _gen = new RandomGen();
+        Extended extended = new Extended();
+        readonly Window _mainWindow;
         public RandomNumberPage()
         {
+            _min = SettingsSection.MinRange;
+            _max = SettingsSection.MaxRange;
             InitializeComponent();
+            if (SettingsSection.DisplayMode)
+            {
+                extended.Show();
+            }
+            else {
+                _mainWindow = Application.Current.MainWindow;
+
+                _mainWindow.WindowStyle = WindowStyle.None;
+                _mainWindow.WindowState = WindowState.Maximized;
+
+            }
         }
 
         private void RoundedButton_Click(object sender, RoutedEventArgs e)
         {
-            chosenNumber.Text = _gen.Next(1, 100).ToString();
+            chosenNumber.Text = _gen.Next(_min, _max).ToString();
+            extended.UpdateNumber(chosenNumber.Text);
         }
     }
 }
