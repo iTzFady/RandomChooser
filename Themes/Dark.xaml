@@ -1,0 +1,9 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <SolidColorBrush Color="#121212" x:Key="Background"/>
+    <SolidColorBrush Color="LightGray" x:Key="Foreground"/>
+    <Color x:Key="ButtonBackgroundColor">White</Color>
+    <Color x:Key="ButtonForegroundColor">Black</Color>
+    <SolidColorBrush Color="{StaticResource ButtonBackgroundColor}" x:Key="ButtonBackground"/>
+    <SolidColorBrush Color="{StaticResource ButtonForegroundColor}" x:Key="ButtomForeground"/>
+</ResourceDictionary>

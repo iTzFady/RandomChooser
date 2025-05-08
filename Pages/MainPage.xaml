@@ -9,13 +9,12 @@
       d:DesignHeight="800" d:DesignWidth="1200"
       Title="MainPage" 
       Background="LightGray">
-
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70*"/>
+            <RowDefinition Height="30*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Image x:Name="Dice" Source="/Assets/Images/dice.png" Grid.Row="0" VerticalAlignment="Bottom" Width="250">
                 <Image.Effect>
                     <DropShadowEffect 
@@ -36,15 +35,6 @@
             FontWeight="Bold"
             FontFamily="Sans"
             Foreground="Black">
-                <Label.BitmapEffect>
-                    <DropShadowBitmapEffect
-                                        Color="Gray"
-                                        Direction="320"
-                                        ShadowDepth="3"
-                                        Opacity=".9"
-                                        Softness="10"
-                    />
-                </Label.BitmapEffect>
             </Label>
         </StackPanel>
         <customControls:RoundedButton Background="Black" Width="450" Height="60" VerticalAlignment="Center" HorizontalAlignment="Center" Corner="15" 
@@ -54,7 +44,7 @@
                                       OnHoverTextColor="Black"
                                       FontSize="30"
                                       FontFamily="Calibri"
-                                      Grid.Column="1" 
+                                      Grid.Row="1" 
                                       Click="RoundedButton_Click" FontWeight="Bold"
                                       />
         <customControls:RoundedButton Background="Black" Width="80" Height="80" VerticalAlignment="Bottom" HorizontalAlignment="Right" Corner="20" 
@@ -64,7 +54,7 @@
                                       OnHoverTextColor="Black"
                                       FontSize="26"
                                       FontFamily="/Assets/Fonts/#Font Awesome 6 Free Solid"
-                                      Grid.Column="1" 
+                                      Grid.Row="1" 
                                       FontWeight="Bold"
                                       Margin="10" Click="SettingsBtn_Click"
                                       />

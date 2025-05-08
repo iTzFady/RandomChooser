@@ -41,6 +41,7 @@ namespace RandomChooser.Pages
         private void RoundedButton_Click(object sender, RoutedEventArgs e)
         {
             chosenNumber.Text = _gen.Next(_min, _max).ToString();
+            Debug.WriteLine(chosenNumber.Text);
             if (SettingsSection.DisplayMode) {
                 extended.UpdateNumber(chosenNumber.Text);
             }

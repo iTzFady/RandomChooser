@@ -7,7 +7,7 @@
         xmlns:customControls="clr-namespace:RandomChooser.Controls"
         xmlns:Pages="clr-namespace:RandomChooser.Pages"
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="1200" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/Assets/Images/dice.png"
+        Title="Random Chooser" Height="800" Width="1200" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/Assets/Images/dice.png"
         AllowsTransparency="False"
         Background="LightGray">
 

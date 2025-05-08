@@ -24,8 +24,8 @@
                 <Trigger.EnterActions>
                     <BeginStoryboard>
                         <Storyboard>
-                            <ColorAnimation Storyboard.TargetProperty="Background.(SolidColorBrush.Color)" To="White" Duration="0:0:0.3"/>
-                            <ColorAnimation Storyboard.TargetProperty="Foreground.(SolidColorBrush.Color)" To="Black" Duration="0:0:0.3"/>
+                            <ColorAnimation Storyboard.TargetProperty="Background.(SolidColorBrush.Color)" To="White" Duration="0:0:0.2"/>
+                            <ColorAnimation Storyboard.TargetProperty="Foreground.(SolidColorBrush.Color)" To="Black" Duration="0:0:0.2"/>
                         </Storyboard>
                     </BeginStoryboard>
                 </Trigger.EnterActions>
@@ -33,8 +33,8 @@
                 <Trigger.ExitActions>
                     <BeginStoryboard>
                         <Storyboard>
-                            <ColorAnimation AccelerationRatio="1" Storyboard.TargetProperty="Background.(SolidColorBrush.Color)" To="Black" Duration="0:0:0.3"/>
-                            <ColorAnimation Storyboard.TargetProperty="Foreground.(SolidColorBrush.Color)" To="White" Duration="0:0:0.3"/>
+                            <ColorAnimation AccelerationRatio="1" Storyboard.TargetProperty="Background.(SolidColorBrush.Color)" To="Black" Duration="0:0:0.2"/>
+                            <ColorAnimation Storyboard.TargetProperty="Foreground.(SolidColorBrush.Color)" To="White" Duration="0:0:0.2"/>
                         </Storyboard>
                     </BeginStoryboard>
                 </Trigger.ExitActions>
