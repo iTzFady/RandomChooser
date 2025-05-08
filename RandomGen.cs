@@ -5,7 +5,7 @@ namespace RandomChooser
 {
     internal class RandomGen
     {
-        private readonly RandomNumberGenerator _rng = RandomNumberGenerator.Create();
+        private readonly RandomNumberGenerator _rnd = RandomNumberGenerator.Create();
 
         public int Next(int min , int max) {
             if (min > max) throw new ArgumentOutOfRangeException("Min must be less than Max");
