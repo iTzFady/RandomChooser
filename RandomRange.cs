@@ -1,4 +1,5 @@
 ﻿using System.Configuration;
+using System.Windows.Media;
 
 namespace RandomChooser
 {
@@ -27,6 +28,19 @@ namespace RandomChooser
         {
             get { return (bool)this["Theme"]; }
             set { this["Theme"] = value; }
+        }
+
+        [ConfigurationProperty("TextColor", DefaultValue = "Black")]
+        public Brush TextColorBrush
+        {
+            get { return (SolidColorBrush)this["TextColor"]; }
+            set { this["TextColor"] = value; }
+        }
+        [ConfigurationProperty("PageColor", DefaultValue = "Gray")]
+        public Brush PageColorBrush
+        {
+            get { return (SolidColorBrush)this["PageColor"]; }
+            set { this["PageColor"] = value; }
         }
     }
 }

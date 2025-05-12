@@ -14,6 +14,8 @@
   <Product>Random Chooser</Product>
   <Version>1.0.0.0</Version>
   <FileVersion>1.0.0.0</FileVersion>
+  <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+
 
   </PropertyGroup>
 
@@ -24,6 +26,7 @@
     <None Remove="Assets\Images\ButtonAnimationFrames\Frame-1.png" />
     <None Remove="Assets\Images\ButtonAnimationFrames\Frame-2.png" />
     <None Remove="Assets\Images\dice.png" />
+    <None Remove="Assets\Images\dictionary.png" />
     <None Remove="Assets\Images\monitor.png" />
     <None Remove="Assets\Images\moon.png" />
     <None Remove="Assets\Images\night-sky.jpg" />
@@ -61,6 +64,9 @@
     <Resource Include="Assets\Images\2monitors.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Assets\Images\dictionary.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Assets\Images\monitor.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -79,6 +85,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="PixiEditor.ColorPicker" Version="3.4.2" />
     <PackageReference Include="WpfScreenHelper" Version="2.1.1" />
   </ItemGroup>
 

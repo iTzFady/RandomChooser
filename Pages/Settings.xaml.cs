@@ -2,6 +2,9 @@
 using System.Windows.Controls;
 using System.Windows.Navigation;
 using System.Configuration;
+using RandomChooser.CustomWindow;
+using System.Windows.Media;
+using WpfScreenHelper;
 
 
 namespace RandomChooser.Pages
@@ -9,10 +12,12 @@ namespace RandomChooser.Pages
     public partial class Settings : Page
     {
         Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+
         public Settings()
         {
             InitializeComponent();
-
+            List<Screen> screens = Screen.AllScreens.ToList();
+            PresentationMode.DisplayModeSwitch.IsEnabled = screens.Count > 1;
 
             if (config.Sections["RandomRange"] is null)
             {
@@ -39,6 +44,28 @@ namespace RandomChooser.Pages
                     MessageBoxImage.Error);
             }
 
+        }
+
+        private void ___ColorIndicator__Click(object sender, RoutedEventArgs e)
+        {
+            var colorWindow = new ColorPickerWindow();
+            if (colorWindow.ShowDialog() == true)
+            {
+                Color receivedColor = colorWindow.SelectedColor;
+                SolidColorBrush solidColor = new SolidColorBrush(receivedColor);
+                ___ColorIndicator_.Background = solidColor;
+            }
+        }
+
+        private void PageColorIndicator_Click(object sender, RoutedEventArgs e)
+        {
+            var colorWindow = new ColorPickerWindow();
+            if (colorWindow.ShowDialog() == true)
+            {
+                Color pageReceivedColor = colorWindow.SelectedColor;
+                SolidColorBrush solidColor = new SolidColorBrush(pageReceivedColor);
+                PageColorExtended.Background = solidColor;
+            }
         }
     }
 }

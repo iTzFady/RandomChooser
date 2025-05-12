@@ -13,7 +13,7 @@
 
     <Grid>
         <StackPanel Margin="50">
-            <Label Grid.Row="0" Content="The Winner is" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="60" FontFamily="Calibri" FontWeight="Bold"/>
+            <Label Grid.Row="0" x:Name="ExtendedLabelText" Content="The Winner is" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="60" FontFamily="Calibri" FontWeight="Bold"/>
             <TextBlock Grid.Row="1" x:Name="Number" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="400"
                    Text="0" FontWeight="Bold"/>
         </StackPanel>

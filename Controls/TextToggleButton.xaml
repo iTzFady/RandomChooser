@@ -104,12 +104,12 @@
     </UserControl.Resources>
     <Grid>
         <ToggleButton x:Name="DisplayModeSwitch" Style="{DynamicResource TextToggleButtonStyle}" 
-                      BorderThickness="3,3,3,3" 
+                      BorderThickness="1,1,1,1" 
                       Checked="DisplayModeSwitch_Checked" 
                       Unchecked="DisplayModeSwitch_Unchecked"
                       IsChecked="{Binding DisplayMode}">
-            <Grid Height="90" Width="182">
-                <DockPanel Name="Holder" Margin="10,10,10,7" VerticalAlignment="Center">
+            <Grid Height="100">
+                <DockPanel Name="Holder" Margin="10,10,10,7" VerticalAlignment="Center" Width="180">
                     <ToggleButton Style="{DynamicResource InnerButtonStyle}" x:Name="InnerButton" Height="45" Width="45" HorizontalAlignment="Left" BorderThickness="0,0,0,0" VerticalAlignment="Center" Background="White">
                         <Image Name="Icon" Source="/Assets/Images/monitor.png" Height="25" Width="25"/>
                     </ToggleButton>

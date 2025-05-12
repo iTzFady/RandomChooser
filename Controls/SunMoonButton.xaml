@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:RandomChooser.Controls"
              mc:Ignorable="d" 
-             d:DesignHeight="100" d:DesignWidth="200">
+             d:DesignHeight="100" d:DesignWidth="200" BorderThickness="1,1,1,1">
     <UserControl.Resources>
 
         <Storyboard x:Key="DarkModeAnimation">
@@ -157,18 +157,18 @@
         </Style>
 
     </UserControl.Resources>
-    <Grid>
+    <Grid Height="100">
         <ToggleButton x:Name="ThemeSwitch" Style="{DynamicResource SunMoonStyle}" 
                       BorderBrush="#FFCACACA" 
                       BorderThickness="3,3,3,3" 
                       Checked="ThemeSwitch_Checked" 
                       Unchecked="ThemeSwitch_Unchecked" 
                       IsChecked="{Binding Theme}">
-                <ToggleButton.Background>
+            <ToggleButton.Background>
                 <ImageBrush ImageSource="/Assets/Images/ButtonAnimationFrames/Sunny.jpg"/>
             </ToggleButton.Background>
             <Grid VerticalAlignment="Center">
-                <DockPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="166" Height="99">
+                <DockPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="180">
                     <ToggleButton x:Name="InnerButton" Style="{DynamicResource InnerButtonStyle}" Width="50" Height="50" HorizontalAlignment="Left">
                         <ToggleButton.Background>
                             <ImageBrush ImageSource="/Assets/Images/sun.png" Stretch="Fill"/>

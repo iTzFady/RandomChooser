@@ -16,7 +16,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Label Grid.Row="0" Content="The Winner is" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="70" Margin="20,50,50,50" FontFamily="Calibri" FontWeight="Bold"/>
+        <Label Grid.Row="0" x:Name="LabelText" Content="The Winner is" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="70" Margin="20,50,50,50" FontFamily="Calibri" FontWeight="Bold"/>
         <TextBlock Grid.Row="1" x:Name="chosenNumber" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="250"
                    Text="0" FontWeight="Bold"/>
         <controls:RoundedButton Grid.Row="2" x:Name="ResetBtn" Background="Black" Width="100" Height="100" VerticalAlignment="Center" HorizontalAlignment="Center" Corner="40" 
