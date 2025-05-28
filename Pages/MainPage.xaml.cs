@@ -29,5 +29,10 @@ namespace RandomChooser.Pages
         {
             NavigationService.Navigate(new Settings());
         }
+
+        private void RoundedButton_Click_1(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new RandomWordPage());
+        }
     }
 }

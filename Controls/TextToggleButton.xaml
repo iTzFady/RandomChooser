@@ -107,13 +107,13 @@
                       BorderThickness="1,1,1,1" 
                       Checked="DisplayModeSwitch_Checked" 
                       Unchecked="DisplayModeSwitch_Unchecked"
-                      IsChecked="{Binding DisplayMode}">
-            <Grid Height="100">
-                <DockPanel Name="Holder" Margin="10,10,10,7" VerticalAlignment="Center" Width="180">
-                    <ToggleButton Style="{DynamicResource InnerButtonStyle}" x:Name="InnerButton" Height="45" Width="45" HorizontalAlignment="Left" BorderThickness="0,0,0,0" VerticalAlignment="Center" Background="White">
-                        <Image Name="Icon" Source="/Assets/Images/monitor.png" Height="25" Width="25"/>
+                      IsChecked="{Binding AppearanceSetting.DisplayMode}" Width="150" Height="80">
+            <Grid Height="62" Width="140">
+                <DockPanel Name="Holder"  VerticalAlignment="Center" Margin="10,0,10,0">
+                    <ToggleButton Style="{DynamicResource InnerButtonStyle}" x:Name="InnerButton" Height="35" Width="35" HorizontalAlignment="Left" BorderThickness="0,0,0,0" VerticalAlignment="Center" Background="White">
+                        <Image Name="Icon" Source="/Assets/Images/monitor.png" Height="15" Width="15"/>
                     </ToggleButton>
-                    <Label x:Name="CurrentMode" HorizontalContentAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="20" Content="Duplicate"/>
+                    <Label x:Name="CurrentMode" HorizontalContentAlignment="Center" FontWeight="Bold" FontSize="14" Content="Duplicate" Width="73" Padding="5,5,5,5" Grid.IsSharedSizeScope="True" VerticalContentAlignment="Center"/>
                 </DockPanel>
             </Grid>
         </ToggleButton>

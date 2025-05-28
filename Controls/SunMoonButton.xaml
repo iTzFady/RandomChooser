@@ -163,7 +163,7 @@
                       BorderThickness="3,3,3,3" 
                       Checked="ThemeSwitch_Checked" 
                       Unchecked="ThemeSwitch_Unchecked" 
-                      IsChecked="{Binding Theme}">
+                      IsChecked="{Binding AppearanceSetting.Theme}">
             <ToggleButton.Background>
                 <ImageBrush ImageSource="/Assets/Images/ButtonAnimationFrames/Sunny.jpg"/>
             </ToggleButton.Background>

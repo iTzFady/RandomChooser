@@ -17,6 +17,7 @@ namespace RandomChooser.Pages
         int _min = 0;
         int _max = 0;
         RandomRange? SettingsSection = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None).GetSection("RandomRange") as RandomChooser.RandomRange;
+        AppearanceSettings? AppearanceSection = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None).GetSection("ApplicationSettings") as RandomChooser.AppearanceSettings;
         RandomGen _gen = new RandomGen();
         Extended extended = new Extended();
         readonly Window _mainWindow;
@@ -24,26 +25,26 @@ namespace RandomChooser.Pages
         bool display;
         public RandomNumberPage()
         {
-            display = Screen.AllScreens.Count() > 1 ? SettingsSection.DisplayMode : false;
+            display = Screen.AllScreens.Count() > 1 ? AppearanceSection.DisplayMode : false;
             _min = SettingsSection.MinRange;
             _max = SettingsSection.MaxRange;
             InitializeComponent();
             if (chosenNumber != null) {
-                chosenNumber.Foreground = SettingsSection.TextColorBrush;
+                chosenNumber.Foreground = AppearanceSection.TextColorBrush;
             }
             if (LabelText != null)
             {
-                LabelText.Foreground = SettingsSection.TextColorBrush;
+                LabelText.Foreground = AppearanceSection.TextColorBrush;
             }
             if (display)
             {
-                extended.Background = SettingsSection.PageColorBrush;
+                extended.Background = AppearanceSection.PageColorBrush;
                 extended.Show();
-                extended.UpdateColor(SettingsSection.TextColorBrush);
+                extended.UpdateColor(AppearanceSection.TextColorBrush);
             }
             else {
                 _mainWindow = Application.Current.MainWindow;
-                this.Background = SettingsSection.PageColorBrush;
+                this.Background = AppearanceSection.PageColorBrush;
                 _mainWindow.WindowStyle = WindowStyle.None;
                 _mainWindow.WindowState = WindowState.Maximized;
 

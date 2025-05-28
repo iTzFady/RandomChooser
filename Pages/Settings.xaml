@@ -8,6 +8,7 @@
       d:DesignHeight="800" d:DesignWidth="1200"
       Background="LightGray"
       Title="Settings">
+    
     <Page.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -78,11 +79,11 @@
             </TextBlock.BitmapEffect>
         </TextBlock>
         <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <customControls:Textfield x:Name="MinValue" TextFieldText="{Binding MinRange , Mode=TwoWay}" TopText="Min" Grid.Row="2" HorizontalAlignment="Left" Width="800" Margin="10 10 10 10"/>
-            <customControls:Textfield x:Name="MaxValue" TextFieldText="{Binding MaxRange , Mode=TwoWay}" TopText="Max" Grid.Row="3" HorizontalAlignment="Right" Width="800" Margin="10 10 10 10"/>
+            <customControls:Textfield x:Name="MinValue" TextFieldText="{Binding RandomRange.MinRange , Mode=TwoWay}" TopText="Min" Grid.Row="2" HorizontalAlignment="Left" Width="800" Margin="10 10 10 10"/>
+            <customControls:Textfield x:Name="MaxValue" TextFieldText="{Binding RandomRange.MaxRange , Mode=TwoWay}" TopText="Max" Grid.Row="3" HorizontalAlignment="Right" Width="800" Margin="10 10 10 10"/>
         </StackPanel>
         <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <customControls:SunMoonButton Theme="{Binding Theme}" Margin="20" Width="200" Height="100"/>
+            <customControls:SunMoonButton Theme="{Binding AppearanceSetting.Theme}" Margin="20" Width="200" Height="100"/>
             <TextBlock Text="|" 
                        HorizontalAlignment="Center" 
                        FontSize="10" 
@@ -94,13 +95,13 @@
                     <ScaleTransform ScaleY="8"/>
                 </TextBlock.RenderTransform>
             </TextBlock>
-            
-            <customControls:TextToggleButton x:Name="PresentationMode" State="{Binding DisplayMode}" Margin="20" Width="200" Height="100"/>
+
+            <customControls:TextToggleButton x:Name="PresentationMode" State="{Binding AppearanceSetting.DisplayMode}" Margin="20"/>
         </StackPanel>
 
         <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
-                <Button Style="{DynamicResource ColorCircle}" x:Name="___ColorIndicator_" Background="{Binding TextColorBrush , Mode=TwoWay}" Click="___ColorIndicator__Click"/>
+                <Button Style="{DynamicResource ColorCircle}" x:Name="___ColorIndicator_" Background="{Binding AppearanceSetting.TextColorBrush , Mode=TwoWay}" Click="___ColorIndicator__Click"/>
                 <Label Grid.Column="1" Content="Text Color" FontSize="25" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Margin="10 0 0 0"/>
             </StackPanel>
 
@@ -116,7 +117,7 @@
                 </TextBlock.RenderTransform>
             </TextBlock>
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
-                <Button Style="{DynamicResource ColorCircle}" x:Name="PageColorExtended" Background="{Binding PageColorBrush , Mode=TwoWay}" Click="PageColorIndicator_Click"/>
+                <Button Style="{DynamicResource ColorCircle}" x:Name="PageColorExtended" Background="{Binding AppearanceSetting.PageColorBrush , Mode=TwoWay}" Click="PageColorIndicator_Click"/>
                 <Label Grid.Column="1" Content="Page Background" FontSize="25" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Margin="10 0 0 0"/>
             </StackPanel>
         </StackPanel>

@@ -1,24 +1,33 @@
-﻿using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Navigation;
+﻿using RandomChooser.CustomWindow;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Configuration;
-using RandomChooser.CustomWindow;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
 using System.Windows.Media;
-using WpfScreenHelper;
-
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
 namespace RandomChooser.Pages
 {
-    public partial class Settings : Page
+    /// <summary>
+    /// Interaction logic for WordSettings_Page.xaml
+    /// </summary>
+    public partial class WordSettings_Page : Page
     {
         Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-
-        public Settings()
+        public ObservableCollection<Item> Items { get; set; }
+        public WordSettings_Page()
         {
             InitializeComponent();
-            List<Screen> screens = Screen.AllScreens.ToList();
-            PresentationMode.DisplayModeSwitch.IsEnabled = screens.Count > 1;
-
             if (config.Sections["RandomRange"] is null)
             {
                 config.Sections.Add("RandomRange", new RandomRange());
@@ -27,31 +36,21 @@ namespace RandomChooser.Pages
             {
                 config.Sections.Add("ApplicationSettings", new AppearanceSettings());
             }
-            var randomNumberRange = config.GetSection("RandomRange");
+            var WordList = WordGen.LoadWords();
             var AppSettings = config.GetSection("ApplicationSettings");
-
-            this.DataContext = new
-            {
+            Items = new ObservableCollection<Item>(WordList.Words);
+            this.DataContext = new {
                 AppearanceSetting = AppSettings,
-                RandomRange = randomNumberRange
+                Words = Items
             };
         }
 
         private void RoundedButton_Click(object sender, RoutedEventArgs e)
         {
-            if ((int.Parse(MaxValue.textBox.Text) - int.Parse(MinValue.textBox.Text)) > 1)
-            {
-                config.Save(ConfigurationSaveMode.Modified);
-                ConfigurationManager.RefreshSection("RandomRange");
-                NavigationService.GoBack();
-            }
-            else {
-                MessageBox.Show("Min value must be smaller than max value!",
-                    "Configration Error",
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Error);
-            }
-
+            config.Save(ConfigurationSaveMode.Modified);
+            ConfigurationManager.RefreshSection("ApplicationSettings");
+            WordGen.SaveWords(Items);
+            NavigationService.GoBack();
         }
 
         private void ___ColorIndicator__Click(object sender, RoutedEventArgs e)
@@ -65,7 +64,7 @@ namespace RandomChooser.Pages
             }
         }
 
-        private void PageColorIndicator_Click(object sender, RoutedEventArgs e)
+        private void PageColorExtended_Click(object sender, RoutedEventArgs e)
         {
             var colorWindow = new ColorPickerWindow();
             if (colorWindow.ShowDialog() == true)
@@ -74,6 +73,17 @@ namespace RandomChooser.Pages
                 SolidColorBrush solidColor = new SolidColorBrush(pageReceivedColor);
                 PageColorExtended.Background = solidColor;
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Items.Add(new Item());
+        }
+
+        private void RemoveItem_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button btn && btn.DataContext is Item item)
+                Items.Remove(item);
         }
     }
 }

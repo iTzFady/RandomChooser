@@ -24,5 +24,15 @@ namespace RandomChooser.Pages
         {
             InitializeComponent();
         }
+
+        private void RoundedButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
+
+        private void SettingsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new WordSettings_Page());
+        }
     }
 }
