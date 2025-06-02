@@ -71,18 +71,5 @@
                                       Margin="10" Click="SettingsBtn_Click"
                                       />
 
-        <customControls:RoundedButton Background="Black" x:Name="EditBtn" Width="80" Height="80" VerticalAlignment="Bottom" HorizontalAlignment="Left" Corner="20" 
-                                      Content="&#xf304;"
-                                      Foreground="White"
-                                      OnHoverBackground="White"
-                                      OnHoverTextColor="Black"
-                                      FontSize="26"
-                                      FontFamily="/Assets/Fonts/#Font Awesome 6 Free Solid"
-                                      Grid.Row="1" 
-                                      FontWeight="Bold"
-                                      Margin="10"
-                                      />
-
-
     </Grid>
 </Page>

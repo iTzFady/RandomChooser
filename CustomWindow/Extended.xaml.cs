@@ -9,10 +9,12 @@ namespace RandomChooser.CustomWindow
     /// </summary>
     public partial class Extended : Window
     {
-        public Extended()
+        bool isNumbers = true;
+        public Extended(bool _currentMode)
         {
             InitializeComponent();
             Loaded += Extended_Loaded;
+            isNumbers = _currentMode;
         }
 
         private void Extended_Loaded(object sender, RoutedEventArgs e)
@@ -27,13 +29,15 @@ namespace RandomChooser.CustomWindow
                 Width = bounds.Width;
                 Height = bounds.Height;
             }
+            ExtendedLabelText.Content = isNumbers ? "The Winner is" : "Today’s Pick";
+            Selected.FontSize = isNumbers ? 300 : 150;
         }
 
         public void UpdateNumber(string newNumber) {
-            Number.Text = newNumber;
+            Selected.Text = newNumber;
         }
         public void UpdateColor(Brush color) { 
-            Number.Foreground = color;
+            Selected.Foreground = color;
             ExtendedLabelText.Foreground = color;
         }
     }

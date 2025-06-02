@@ -12,7 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using WpfScreenHelper;
 namespace RandomChooser.CustomWindow
 {
     /// <summary>
@@ -25,6 +25,14 @@ namespace RandomChooser.CustomWindow
         public ColorPickerWindow()
         {
             InitializeComponent();
+            Loaded += ColorPickerWindow_Loaded;
+        }
+
+        private void ColorPickerWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            var screen = Screen.PrimaryScreen.WorkingArea;
+            this.Left = screen.Left + (screen.Width - this.Width) / 2;
+            this.Top = screen.Top + (screen.Height - this.Height) / 2;
         }
 
         private void SaveBtn_Click(object sender, RoutedEventArgs e)

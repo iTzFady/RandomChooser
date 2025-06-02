@@ -40,13 +40,14 @@
         <StackPanel Grid.Row="1">
             <customControls:RoundedButton Background="Black" Margin="20" Width="450" Height="60" VerticalAlignment="Center" HorizontalAlignment="Center" Corner="15" 
                                       Content="Start Random Word"
+                                      x:Name="StartWord"
                                       Foreground="White"
                                       OnHoverBackground="White"
                                       OnHoverTextColor="Black"
                                       FontSize="30"
                                       FontFamily="Calibri"
                                       Grid.Row="1" 
-                                      FontWeight="Bold"
+                                      FontWeight="Bold" Click="StartWord_Click"
                                       />
             <customControls:RoundedButton Background="Black" Width="450" Height="60" VerticalAlignment="Center" HorizontalAlignment="Center" Corner="15" 
                                       Content="Switch to Random Number"
@@ -70,20 +71,6 @@
                                       FontWeight="Bold"
                                       Margin="10" Click="SettingsBtn_Click"
                                       />
-
-        <customControls:RoundedButton Background="Black" x:Name="EditBtn" Width="80" Height="80" VerticalAlignment="Bottom" HorizontalAlignment="Left" Corner="20" 
-                                      Content="&#xf304;"
-                                      Foreground="White"
-                                      OnHoverBackground="White"
-                                      OnHoverTextColor="Black"
-                                      FontSize="26"
-                                      FontFamily="/Assets/Fonts/#Font Awesome 6 Free Solid"
-                                      Grid.Row="1" 
-                                      FontWeight="Bold"
-                                      Margin="10"
-                                      />
-
-
     </Grid>
 
 

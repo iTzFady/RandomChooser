@@ -6,7 +6,6 @@ using RandomChooser.CustomWindow;
 using System.Windows.Media;
 using WpfScreenHelper;
 
-
 namespace RandomChooser.Pages
 {
     public partial class Settings : Page
@@ -54,14 +53,14 @@ namespace RandomChooser.Pages
 
         }
 
-        private void ___ColorIndicator__Click(object sender, RoutedEventArgs e)
+        private void PageColorExtended_Click(object sender, RoutedEventArgs e)
         {
             var colorWindow = new ColorPickerWindow();
             if (colorWindow.ShowDialog() == true)
             {
                 Color receivedColor = colorWindow.SelectedColor;
                 SolidColorBrush solidColor = new SolidColorBrush(receivedColor);
-                ___ColorIndicator_.Background = solidColor;
+                PageColorExtended.Background = solidColor;
             }
         }
 
@@ -72,7 +71,7 @@ namespace RandomChooser.Pages
             {
                 Color pageReceivedColor = colorWindow.SelectedColor;
                 SolidColorBrush solidColor = new SolidColorBrush(pageReceivedColor);
-                PageColorExtended.Background = solidColor;
+                ColorIndicator.Background = solidColor;
             }
         }
     }

@@ -1,36 +1,35 @@
 ﻿using RandomChooser.CustomWindow;
+using RandomChooser.Helpers;
 using System.Configuration;
-using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Navigation;
 using WpfScreenHelper;
-using RandomChooser.Helpers;
 
 namespace RandomChooser.Pages
 {
     /// <summary>
-    /// Interaction logic for RandomNumberPage.xaml
+    /// Interaction logic for RandomWordControlPage.xaml
     /// </summary>
-    public partial class RandomNumberPage : Page
+    public partial class RandomWordControlPage : Page
     {
-        int _min;
-        int _max;
-        RandomRange? SettingsSection = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None).GetSection("RandomRange") as RandomChooser.RandomRange;
         AppearanceSettings? AppearanceSection = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None).GetSection("ApplicationSettings") as RandomChooser.AppearanceSettings;
-        RandomGen _gen = new RandomGen();
         Extended extended;
         readonly Window _mainWindow;
         Window _extended_window;
+        Random rand = new Random();
         bool display;
-        public RandomNumberPage()
+        List<Item> items;
+        public RandomWordControlPage()
         {
             display = Screen.AllScreens.Count() > 1 ? AppearanceSection.DisplayMode : false;
-            _min = SettingsSection.MinRange;
-            _max = SettingsSection.MaxRange;
+            var WordList = WordGen.LoadWords();
+            items = WordList.Words;
             InitializeComponent();
-            if (chosenNumber != null) {
-                chosenNumber.Foreground = AppearanceSection.TextColorBrush;
+            if (chosenWord != null)
+            {
+                chosenWord.Foreground = AppearanceSection.TextColorBrush;
             }
             if (LabelText != null)
             {
@@ -38,12 +37,13 @@ namespace RandomChooser.Pages
             }
             if (display)
             {
-                extended = new Extended(true);
+                extended = new Extended(false);
                 extended.Background = AppearanceSection.PageColorBrush;
                 extended.Show();
                 extended.UpdateColor(AppearanceSection.TextColorBrush);
             }
-            else {
+            else
+            {
                 _mainWindow = Application.Current.MainWindow;
                 this.Background = AppearanceSection.PageColorBrush;
                 _mainWindow.WindowStyle = WindowStyle.None;
@@ -54,13 +54,13 @@ namespace RandomChooser.Pages
 
         private void RoundedButton_Click(object sender, RoutedEventArgs e)
         {
-            chosenNumber.Text = _gen.Next(_min, _max).ToString();
+            chosenWord.Text = items[rand.Next(0 , items.Count)].Name;
             Utility.PlaySound("select.wav");
-            if (display) {
-                extended.UpdateNumber(chosenNumber.Text);
+            if (display)
+            {
+                extended.UpdateNumber(chosenWord.Text);
             }
         }
-
         private void ExitBtn_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
@@ -73,11 +73,13 @@ namespace RandomChooser.Pages
                 _extended_window = Window.GetWindow(extended);
                 _extended_window.Close();
             }
-            else {
+            else
+            {
                 _mainWindow.WindowStyle = WindowStyle.SingleBorderWindow;
                 _mainWindow.WindowState = WindowState.Normal;
             }
             NavigationService.GoBack();
         }
+
     }
 }

@@ -219,7 +219,6 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
         <TextBlock Grid.Row="0" Text="Settings" HorizontalAlignment="Center" FontSize="80" TextDecorations="Underline" LineStackingStrategy="BlockLineHeight">
@@ -235,26 +234,44 @@
         <Border Grid.Row="1" Margin="8" CornerRadius="1" BorderBrush="Gray" BorderThickness="1" Width="400">
             <StackPanel  HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Label Content="Words" FontSize="20" Background="{x:Null}" BorderThickness="0,0,0,2" Margin="3" Padding="5,5,5,5" BorderBrush="#FF8A8A8A" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"/>
-                <DockPanel Margin="10">
-                    <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden" PanningMode="Both" CanContentScroll="True">
-                        <ListBox Style="{DynamicResource WordListBox}" x:Name="WordsList" Margin="5,5,5,5"
+                <Grid>
+                    <DockPanel Margin="10">
+                        <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalScrollBarVisibility="Hidden" PanningMode="Both" CanContentScroll="True">
+                            <ListBox Style="{DynamicResource WordListBox}" x:Name="WordsList" Margin="5,5,5,5"
                           ItemsSource="{Binding Words}" Background="{x:Null}"
                                  Height="265"
                           MaxHeight="275" BorderThickness="0,0,0,0"
                           >
-                            <ListBox.ItemTemplate>
-                                <DataTemplate>
-                                    <DockPanel Margin="10" >
-                                        <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" FontSize="20" Width="250" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#FF404040" TextAlignment="Center"/>
-                                        <Button Style="{DynamicResource RemoveBtn}" Content="&#xf1f8;" Margin="5,0" FontFamily="/Assets/Fonts/#Font Awesome 6 Free Solid"
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <DockPanel Margin="10" >
+                                            <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" FontSize="20" Width="250" Background="{x:Null}" BorderThickness="0,0,0,1" BorderBrush="#FF404040" TextAlignment="Center"/>
+                                            <Button Style="{DynamicResource RemoveBtn}" Content="&#xf1f8;" Margin="5,0" FontFamily="/Assets/Fonts/#Font Awesome 6 Free Solid"
                                                 HorizontalAlignment="Right"
                                         Click="RemoveItem_Click"/>
-                                    </DockPanel>
-                                </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
-                    </ScrollViewer>
-                </DockPanel>
+                                        </DockPanel>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </ScrollViewer>
+                    </DockPanel>
+                    <TextBlock Text="No items, Please click the + button to add new item"
+                               HorizontalAlignment="Center" 
+                               VerticalAlignment="Center"
+                               FontSize="15"
+                               FontWeight="SemiBold">
+                        <TextBlock.Style>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ElementName=WordsList , Path=Items.Count}" Value="0">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                </Grid>
                 <Button Style="{DynamicResource AddBtn}" FontSize="26"
                         FontFamily="/Assets/Fonts/#Font Awesome 6 Free Solid"
                         Content="&#x2b;" Click="Button_Click"
@@ -262,17 +279,12 @@
                         />
             </StackPanel>
         </Border>
-        <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <TextBlock Text="Display Mode: " HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" FontFamily="Segoe UI" FontWeight="Bold"/>
-            <customControls:TextToggleButton x:Name="PresentationMode" State="{Binding AppearanceSetting.DisplayMode}" Margin="20"/>
-        </StackPanel>
 
-        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
                 <Button Style="{DynamicResource ColorCircle}" x:Name="___ColorIndicator_" Background="{Binding AppearanceSetting.TextColorBrush , Mode=TwoWay}" Click="___ColorIndicator__Click"/>
                 <Label Grid.Column="1" Content="Text Color" FontSize="25" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Margin="10 0 0 0"/>
             </StackPanel>
-
             <TextBlock Text="|" 
                        HorizontalAlignment="Center" 
                        FontSize="8" 
@@ -281,15 +293,32 @@
                        Foreground="Gray"
                        >
                 <TextBlock.RenderTransform>
-                    <ScaleTransform ScaleY="4"/>
+                    <ScaleTransform ScaleY="10"/>
                 </TextBlock.RenderTransform>
             </TextBlock>
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
                 <Button Style="{DynamicResource ColorCircle}" x:Name="PageColorExtended" Background="{Binding AppearanceSetting.PageColorBrush , Mode=TwoWay}" Click="PageColorExtended_Click"/>
                 <Label Grid.Column="1" Content="Page Background" FontSize="25" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Margin="10 0 0 0"/>
             </StackPanel>
+            <TextBlock Text="|" 
+                       HorizontalAlignment="Center" 
+                       FontSize="10" 
+                       TextAlignment="Center"
+                       Margin="10 0 10 0"
+                       Foreground="Gray"
+                       >
+                <TextBlock.RenderTransform>
+                    <ScaleTransform ScaleY="8"/>
+                </TextBlock.RenderTransform>
+            </TextBlock>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                
+                <Label Grid.Column="1" Content="Display mode" FontSize="25" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Margin="10 0 0 0"/>
+                <customControls:TextToggleButton x:Name="PresentationMode" State="{Binding AppearanceSetting.DisplayMode}" Margin="20"/>
+            </StackPanel>
         </StackPanel>
-        <customControls:RoundedButton Grid.Row = "4"
+        
+        <customControls:RoundedButton Grid.Row = "3"
                                       Background="Black" 
                                       x:Name="ConfirmBtn"
                                       Width="200" 

@@ -65,10 +65,9 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" Text="Settings" HorizontalAlignment="Center" FontSize="80" TextDecorations="Underline" LineStackingStrategy="BlockLineHeight">
+        <TextBlock Grid.Row="0" Text="Settings" HorizontalAlignment="Center" FontSize="80" TextDecorations="Underline" LineStackingStrategy="BlockLineHeight" Padding="00 0 0 50">
             <TextBlock.BitmapEffect>
                 <DropShadowBitmapEffect Color="Black"
                                         Direction="320"
@@ -78,33 +77,16 @@
                                         />
             </TextBlock.BitmapEffect>
         </TextBlock>
-        <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="30">
             <customControls:Textfield x:Name="MinValue" TextFieldText="{Binding RandomRange.MinRange , Mode=TwoWay}" TopText="Min" Grid.Row="2" HorizontalAlignment="Left" Width="800" Margin="10 10 10 10"/>
             <customControls:Textfield x:Name="MaxValue" TextFieldText="{Binding RandomRange.MaxRange , Mode=TwoWay}" TopText="Max" Grid.Row="3" HorizontalAlignment="Right" Width="800" Margin="10 10 10 10"/>
         </StackPanel>
-        <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <customControls:SunMoonButton Theme="{Binding AppearanceSetting.Theme}" Margin="20" Width="200" Height="100"/>
-            <TextBlock Text="|" 
-                       HorizontalAlignment="Center" 
-                       FontSize="10" 
-                       TextAlignment="Center"
-                       Margin="10"
-                       Foreground="Gray"
-                       >
-                <TextBlock.RenderTransform>
-                    <ScaleTransform ScaleY="8"/>
-                </TextBlock.RenderTransform>
-            </TextBlock>
 
-            <customControls:TextToggleButton x:Name="PresentationMode" State="{Binding AppearanceSetting.DisplayMode}" Margin="20"/>
-        </StackPanel>
-
-        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5">
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
-                <Button Style="{DynamicResource ColorCircle}" x:Name="___ColorIndicator_" Background="{Binding AppearanceSetting.TextColorBrush , Mode=TwoWay}" Click="___ColorIndicator__Click"/>
+                <Button Style="{DynamicResource ColorCircle}" x:Name="ColorIndicator" Background="{Binding AppearanceSetting.TextColorBrush , Mode=TwoWay}" Click="PageColorIndicator_Click"/>
                 <Label Grid.Column="1" Content="Text Color" FontSize="25" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Margin="10 0 0 0"/>
             </StackPanel>
-
             <TextBlock Text="|" 
                        HorizontalAlignment="Center" 
                        FontSize="8" 
@@ -113,15 +95,33 @@
                        Foreground="Gray"
                        >
                 <TextBlock.RenderTransform>
-                    <ScaleTransform ScaleY="4"/>
+                    <ScaleTransform ScaleY="10"/>
                 </TextBlock.RenderTransform>
             </TextBlock>
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
-                <Button Style="{DynamicResource ColorCircle}" x:Name="PageColorExtended" Background="{Binding AppearanceSetting.PageColorBrush , Mode=TwoWay}" Click="PageColorIndicator_Click"/>
+                <Button Style="{DynamicResource ColorCircle}" x:Name="PageColorExtended" Background="{Binding AppearanceSetting.PageColorBrush , Mode=TwoWay}" Click="PageColorExtended_Click"/>
                 <Label Grid.Column="1" Content="Page Background" FontSize="25" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Margin="10 0 0 0"/>
             </StackPanel>
+            <TextBlock Text="|" 
+                       HorizontalAlignment="Center" 
+                       FontSize="10" 
+                       TextAlignment="Center"
+                       Margin="10 0 10 0"
+                       Foreground="Gray"
+                       >
+                <TextBlock.RenderTransform>
+                    <ScaleTransform ScaleY="8"/>
+                </TextBlock.RenderTransform>
+            </TextBlock>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+
+                <Label Grid.Column="1" Content="Display mode" FontSize="25" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Margin="10 0 0 0"/>
+                <customControls:TextToggleButton x:Name="PresentationMode" State="{Binding AppearanceSetting.DisplayMode}" Margin="20"/>
+            </StackPanel>
         </StackPanel>
-        <customControls:RoundedButton Grid.Row = "4"
+
+
+        <customControls:RoundedButton Grid.Row = "3"
                                       Background="Black" 
                                       x:Name="ConfirmBtn"
                                       Width="200" 

@@ -1,6 +1,7 @@
 ﻿using System.Configuration;
 using System.Data;
 using System.Windows;
+using System.Windows.Media;
 
 namespace RandomChooser
 {
@@ -9,7 +10,6 @@ namespace RandomChooser
     /// </summary>
     public partial class App : System.Windows.Application
     {
-        
-    }
 
+    }
 }

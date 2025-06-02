@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,6 +34,21 @@ namespace RandomChooser.Pages
         private void SettingsBtn_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new WordSettings_Page());
+        }
+
+        private void StartWord_Click(object sender, RoutedEventArgs e)
+        {
+            ConfigurationManager.RefreshSection("ApplicationSettings");
+            if (WordGen.LoadWords().Words.Count > 1)
+            {
+                NavigationService.Navigate(new RandomWordControlPage());
+            }
+            else {
+                MessageBox.Show("You must add Word List in the settings\n Make sure there is more than one word" , 
+                    "Error" , 
+                    MessageBoxButton.OK, 
+                    MessageBoxImage.Error);
+            }
         }
     }
 }

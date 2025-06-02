@@ -1,0 +1,55 @@
+﻿<Page x:Class="RandomChooser.Pages.RandomWordControlPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:RandomChooser.Pages" xmlns:controls="clr-namespace:RandomChooser.Controls"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="1200"
+      Background="LightGray"
+      Title="RandomNumberPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" x:Name="LabelText" Content="Today’s Pick" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="70" Margin="20,50,50,50" FontFamily="Calibri" FontWeight="Bold"/>
+        <TextBlock Grid.Row="1" x:Name="chosenWord" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="100"
+                   Text="....." FontWeight="Bold"/>
+        <controls:RoundedButton Grid.Row="2" x:Name="ResetBtn" Background="Black" Width="100" Height="100" VerticalAlignment="Center" HorizontalAlignment="Center" Corner="40" 
+                                      Content="&#xf2f1;"
+                                      Foreground="White"
+                                      OnHoverBackground="White"
+                                      OnHoverTextColor="Black"
+                                      FontSize="26"
+                                      FontFamily="/Assets/Fonts/#Font Awesome 6 Free Solid"
+                                      Grid.Column="1" 
+                                      FontWeight="Bold"
+                                      Margin="10,10,10,10" Click="RoundedButton_Click"/>
+        <controls:RoundedButton Grid.Row="2" x:Name="HomeBtn" Background="Black" Width="100" Height="100" VerticalAlignment="Center" HorizontalAlignment="Left" Corner="40" 
+                                      Content="&#xf015;"
+                                      Foreground="White"
+                                      OnHoverBackground="White"
+                                      OnHoverTextColor="Black"
+                                      FontSize="26"
+                                      FontFamily="/Assets/Fonts/#Font Awesome 6 Free Solid"
+                                      Grid.Column="1" 
+                                      FontWeight="Bold"
+                                      Margin="150,10,10,10" Click="HomeBtn_Click"/>
+        <controls:RoundedButton Grid.Row="2" x:Name="ExitBtn" Background="Black" Width="100" Height="100" VerticalAlignment="Center" HorizontalAlignment="Right" Corner="40" 
+                                      Content="&#x58;"
+                                      Foreground="White"
+                                      OnHoverBackground="White"
+                                      OnHoverTextColor="Black"
+                                      FontSize="26"
+                                      FontFamily="/Assets/Fonts/#Font Awesome 6 Free Solid"
+                                      Grid.Column="1" 
+                                      FontWeight="Bold"
+                                      Margin="10,10,150,10" Click="ExitBtn_Click"/>
+
+
+    </Grid>
+</Page>

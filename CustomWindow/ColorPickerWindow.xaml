@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RandomChooser.CustomWindow" xmlns:colorpicker="clr-namespace:ColorPicker;assembly=ColorPicker" xmlns:controls="clr-namespace:RandomChooser.Controls"
         mc:Ignorable="d"
-        Title="Choose Color" Height="900" Width="500" Background="#252525">
+        Title="Choose Color" Height="700" Width="450" Background="#252525"
+        Icon="/Assets/Icons/color-icon.png">
 
     <Window.Resources>
         <ResourceDictionary>
@@ -26,7 +27,7 @@
                                          UseHintColor="True"
                                          ColorState="{Binding ElementName=maindisplay, Path=ColorState, Mode=TwoWay, Delay=10}"
                                          SecondColorState="{Binding ElementName=maindisplay, Path=SecondColorState, Mode=TwoWay}" />
-        <controls:RoundedButton Grid.Row="2" x:Name="SaveBtn" Background="Black" Width="100" Height="100" VerticalAlignment="Center" HorizontalAlignment="Center" Corner="40" 
+        <controls:RoundedButton Grid.Row="2" x:Name="SaveBtn" Background="Black" Width="80" Height="80" VerticalAlignment="Center" HorizontalAlignment="Center" Corner="40" 
                                       Content="&#xf0c7;"
                                       Foreground="White"
                                       OnHoverBackground="White"
