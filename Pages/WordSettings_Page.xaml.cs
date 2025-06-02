@@ -85,5 +85,23 @@ namespace RandomChooser.Pages
             if (sender is Button btn && btn.DataContext is Item item)
                 Items.Remove(item);
         }
+
+        private void ResetBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult messageBox = MessageBox.Show("Are you sure you want to reset the settings?", 
+                "Reset Confirmation", 
+                MessageBoxButton.YesNo, 
+                MessageBoxImage.Question,
+                MessageBoxResult.No);
+            if (messageBox == MessageBoxResult.Yes)
+            {
+                config.Sections.Clear();
+                config.Save(ConfigurationSaveMode.Modified);
+                WordGen.ClearWords();
+                Items.Clear();
+                ConfigurationManager.RefreshSection("ApplicationSettings");
+                NavigationService.GoBack();
+            }
+        }
     }
 }

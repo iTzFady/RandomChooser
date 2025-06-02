@@ -29,7 +29,6 @@ namespace RandomChooser
             if (min > max)
                 throw new ArgumentOutOfRangeException(nameof(min), "Min must be less than or equal to Max");
 
-            // Initialize or validate fixed range
             if (!_rangeInitialized)
             {
                 _min = min;
@@ -43,7 +42,6 @@ namespace RandomChooser
 
             int rangeSize = _max - _min + 1;
 
-            // Reset if all values were used
             if (_used.Count >= rangeSize)
             {
                 _used.Clear();

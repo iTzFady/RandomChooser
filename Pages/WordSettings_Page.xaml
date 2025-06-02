@@ -317,8 +317,8 @@
                 <customControls:TextToggleButton x:Name="PresentationMode" State="{Binding AppearanceSetting.DisplayMode}" Margin="20"/>
             </StackPanel>
         </StackPanel>
-        
-        <customControls:RoundedButton Grid.Row = "3"
+        <DockPanel  Grid.Row = "3" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <customControls:RoundedButton
                                       Background="Black" 
                                       x:Name="ConfirmBtn"
                                       Width="200" 
@@ -333,8 +333,25 @@
                                       FontSize="20"
                                       FontFamily="Calibri"
                                       FontWeight="Bold"
-                                      Margin="20" Click="RoundedButton_Click"
+                                      Click="RoundedButton_Click"
                                       />
+            <customControls:RoundedButton 
+                                      Background="Black" 
+                                      x:Name="ResetBtn"
+                                      Width="60" 
+                                      Height="60" 
+                                      VerticalAlignment="Center" 
+                                      HorizontalAlignment="Center" 
+                                      Corner="15" 
+                                      Content="&#xf01e;"
+                                      Foreground="White"
+                                      OnHoverBackground="White"
+                                      OnHoverTextColor="Black"
+                                      FontSize="20"
+                                      FontFamily="/Assets/Fonts/#Font Awesome 6 Free Solid"
+                                      FontWeight="Bold"
+                                      Margin="10" Click="ResetBtn_Click"
+                                      />
+        </DockPanel>
     </Grid>
-
 </Page>

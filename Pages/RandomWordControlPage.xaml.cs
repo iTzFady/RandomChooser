@@ -23,7 +23,11 @@ namespace RandomChooser.Pages
         List<Item> items;
         public RandomWordControlPage()
         {
-            display = Screen.AllScreens.Count() > 1 ? AppearanceSection.DisplayMode : false;
+            if (AppearanceSection is null)
+            {
+                AppearanceSection = new AppearanceSettings();
+            }
+            display = Screen.AllScreens.Count() > 1 ? AppearanceSection!.DisplayMode : false;
             var WordList = WordGen.LoadWords();
             items = WordList.Words;
             InitializeComponent();

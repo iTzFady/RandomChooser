@@ -74,5 +74,21 @@ namespace RandomChooser.Pages
                 ColorIndicator.Background = solidColor;
             }
         }
+
+        private void ResetBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult messageBox = MessageBox.Show("Are you sure you want to reset the settings?", 
+                "Reset Confirmation", 
+                MessageBoxButton.YesNo, 
+                MessageBoxImage.Question,
+                MessageBoxResult.No);
+            if (messageBox == MessageBoxResult.Yes)
+            {
+                config.Sections.Clear();
+                config.Save(ConfigurationSaveMode.Modified);
+                ConfigurationManager.RefreshSection("ApplicationSettings");
+                NavigationService.GoBack();
+            }
+        }
     }
 }

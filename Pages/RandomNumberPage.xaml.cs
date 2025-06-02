@@ -25,6 +25,14 @@ namespace RandomChooser.Pages
         bool display;
         public RandomNumberPage()
         {
+            if (SettingsSection is null)
+            {
+                SettingsSection = new RandomRange();
+            }
+            if (AppearanceSection is null) 
+            { 
+                AppearanceSection = new AppearanceSettings();
+            }
             display = Screen.AllScreens.Count() > 1 ? AppearanceSection.DisplayMode : false;
             _min = SettingsSection.MinRange;
             _max = SettingsSection.MaxRange;

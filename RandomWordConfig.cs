@@ -27,5 +27,11 @@ namespace RandomChooser
             var json = JsonSerializer.Serialize(config, new JsonSerializerOptions { WriteIndented = true });
             File.WriteAllText(ConfigFile, json);
         }
+        public static void ClearWords()
+        {
+            var emptyList = new WordsList { Words = new List<Item>() };
+            var json = JsonSerializer.Serialize(emptyList, new JsonSerializerOptions { WriteIndented = true });
+            File.WriteAllText(ConfigFile, json);
+        }
     }
 }

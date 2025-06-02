@@ -14,6 +14,7 @@ namespace RandomChooser.Pages
     /// </summary>
     public partial class MainPage : Page
     {
+
         public MainPage()
         {
             InitializeComponent();

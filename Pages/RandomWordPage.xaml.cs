@@ -23,6 +23,7 @@ namespace RandomChooser.Pages
     {
         public RandomWordPage()
         {
+
             InitializeComponent();
         }
 

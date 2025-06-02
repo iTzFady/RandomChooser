@@ -16,12 +16,6 @@ namespace RandomChooser
             get { return (bool)this["DisplayMode"]; }
             set { this["DisplayMode"] = value; }
         }
-        [ConfigurationProperty("Theme", DefaultValue = false)]
-        public bool Theme
-        {
-            get { return (bool)this["Theme"]; }
-            set { this["Theme"] = value; }
-        }
 
         [ConfigurationProperty("TextColor", DefaultValue = "Black")]
         public Brush TextColorBrush
@@ -29,7 +23,7 @@ namespace RandomChooser
             get { return (SolidColorBrush)this["TextColor"]; }
             set { this["TextColor"] = value; }
         }
-        [ConfigurationProperty("PageColor", DefaultValue = "Gray")]
+        [ConfigurationProperty("PageColor", DefaultValue = "LightGray")]
         public Brush PageColorBrush
         {
             get { return (SolidColorBrush)this["PageColor"]; }
