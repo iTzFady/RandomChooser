@@ -9,6 +9,11 @@ public static class SoundService
 
     public static void PlaySelection()
     {
+        _ = PlaySelectionAsync();
+    }
+
+    private static async Task PlaySelectionAsync()
+    {
         try
         {
             int volume = Math.Clamp(App.Settings.Volume, 0, 100);
@@ -17,7 +22,7 @@ public static class SoundService
                 return;
             }
 
-            var assembly = Assembly.GetExecutingAssembly();
+            var assembly = typeof(SoundService).Assembly;
             using var stream = assembly.GetManifestResourceStream(ResourceName);
             if (stream is null)
             {
@@ -37,7 +42,7 @@ public static class SoundService
             try
             {
                 File.WriteAllBytes(temp, wav);
-                PlayWithExternalPlayer(temp);
+                await PlayWithExternalPlayerAsync(temp).ConfigureAwait(false);
             }
             finally
             {
@@ -52,7 +57,6 @@ public static class SoundService
         }
         catch
         {
-            // Audio is cosmetic; never interrupt a pick.
         }
     }
 
@@ -82,16 +86,16 @@ public static class SoundService
         throw new InvalidDataException("WAV data chunk not found.");
     }
 
-    private static void PlayWithExternalPlayer(string path)
+    private static async Task PlayWithExternalPlayerAsync(string path)
     {
         if (OperatingSystem.IsWindows())
         {
-            TryStart("powershell", startInfo =>
+            await TryStartAsync("powershell", startInfo =>
             {
                 startInfo.ArgumentList.Add("-NoProfile");
                 startInfo.ArgumentList.Add("-Command");
                 startInfo.ArgumentList.Add($"(New-Object System.Media.SoundPlayer '{path.Replace("'", "''")}').PlaySync()");
-            });
+            }).ConfigureAwait(false);
             return;
         }
 
@@ -101,14 +105,14 @@ public static class SoundService
 
         foreach (var player in players)
         {
-            if (TryStart(player, startInfo => startInfo.ArgumentList.Add(path)))
+            if (await TryStartAsync(player, startInfo => startInfo.ArgumentList.Add(path)).ConfigureAwait(false))
             {
                 return;
             }
         }
     }
 
-    private static bool TryStart(string file, Action<ProcessStartInfo> configure)
+    private static async Task<bool> TryStartAsync(string file, Action<ProcessStartInfo> configure)
     {
         try
         {
@@ -126,7 +130,7 @@ public static class SoundService
                 return false;
             }
 
-            process.WaitForExit();
+            await process.WaitForExitAsync().ConfigureAwait(false);
             return true;
         }
         catch

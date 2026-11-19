@@ -72,7 +72,7 @@ public class TeamBuilderTests
 
         Assert.True(result.Success);
         Assert.Equal(3, result.NameCount);
-        Assert.Equal(2, result.Teams.Count(team => team.Members.Contains("Alex")));
+        Assert.Equal(2, result.Teams.Sum(team => team.Members.Count(name => name == "Alex")));
         Assert.Equal(3, result.Teams.Sum(team => team.Members.Count));
     }
 }

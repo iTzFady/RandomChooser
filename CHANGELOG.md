@@ -44,3 +44,4 @@ All notable changes to this project are documented here.
 - The color picker opens with the current color instead of always using indigo.
 - Temporary audio files are deleted after playback.
 - Save and reset failures show plain-language messages instead of throwing.
+- Selection sound no longer blocks number and word picks while the platform player is running.
