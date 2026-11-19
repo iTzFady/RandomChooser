@@ -1,0 +1,38 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="RandomChooser.Views.ColorPickerWindow"
+        Title="Choose color"
+        Width="420" Height="520"
+        CanResize="False"
+        WindowStartupLocation="CenterOwner">
+
+    <Grid Margin="28" RowDefinitions="Auto,Auto,Auto,Auto,*" >
+        <Border x:Name="Preview" Grid.Row="0" Height="90" CornerRadius="12"
+                BorderBrush="#E4E7EC" BorderThickness="1" Margin="0,0,0,24" />
+
+        <StackPanel Grid.Row="1" Spacing="6" Margin="0,0,0,12">
+            <TextBlock Text="Red" Classes="caption" HorizontalAlignment="Left" />
+            <Slider x:Name="RedSlider" Minimum="0" Maximum="255" TickFrequency="1" IsSnapToTickEnabled="True" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Spacing="6" Margin="0,0,0,12">
+            <TextBlock Text="Green" Classes="caption" HorizontalAlignment="Left" />
+            <Slider x:Name="GreenSlider" Minimum="0" Maximum="255" TickFrequency="1" IsSnapToTickEnabled="True" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Spacing="6" Margin="0,0,0,12">
+            <TextBlock Text="Blue" Classes="caption" HorizontalAlignment="Left" />
+            <Slider x:Name="BlueSlider" Minimum="0" Maximum="255" TickFrequency="1" IsSnapToTickEnabled="True" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="4" VerticalAlignment="Bottom" Spacing="14">
+            <TextBox x:Name="HexBox" FontSize="18" Watermark="#RRGGBB" />
+            <TextBlock x:Name="HexHint" Classes="caption" HorizontalAlignment="Left"
+                       Text="Use a hex color like #4F46E5." IsVisible="False" />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Spacing="12">
+                <Button Classes="secondary" Content="Cancel" Width="100" Click="Cancel_Click" />
+                <Button Content="Save" Width="100" Click="Save_Click" />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

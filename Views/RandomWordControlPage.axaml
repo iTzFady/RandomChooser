@@ -1,0 +1,29 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:RandomChooser"
+             x:Class="RandomChooser.Views.RandomWordControlPage">
+
+    <Grid Margin="56">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock x:Name="LabelText" Grid.Row="0" Classes="caption" FontSize="22"
+                   Text="Today's Pick" Margin="0,24,0,0"
+                   Foreground="{Binding TextColorBrush, Source={x:Static local:App.Settings}}" />
+
+        <TextBlock x:Name="ChosenWord" Grid.Row="1" Classes="result" FontSize="96"
+                   Text="....." Margin="40,0"
+                   Foreground="{Binding TextColorBrush, Source={x:Static local:App.Settings}}" />
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center"
+                    VerticalAlignment="Center" Margin="0,0,0,48">
+            <Button Classes="icon" Content="⌂" ToolTip.Tip="Home" Click="Home_Click" />
+            <Button Classes="icon" Content="⚄" ToolTip.Tip="Pick again" Width="64" Height="64"
+                    CornerRadius="32" FontSize="24" Margin="12,0" Click="Pick_Click" />
+            <Button Classes="icon" Content="✕" ToolTip.Tip="Exit" Click="Exit_Click" />
+        </StackPanel>
+    </Grid>
+</UserControl>

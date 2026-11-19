@@ -1,0 +1,25 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:RandomChooser"
+        x:Class="RandomChooser.Views.ExtendedWindow"
+        Title="Extended"
+        Width="1200" Height="800"
+        SystemDecorations="None"
+        CanResize="False"
+        ShowInTaskbar="False"
+        WindowStartupLocation="Manual"
+        Background="{Binding PageColorBrush, Source={x:Static local:App.Settings}}">
+
+    <Grid Margin="80">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock x:Name="ExtendedLabel" Text="The Winner is" FontSize="38"
+                       FontWeight="SemiBold" HorizontalAlignment="Center" Margin="0,0,0,24"
+                       Foreground="{Binding TextColorBrush, Source={x:Static local:App.Settings}}" />
+            <Border Width="72" Height="3" CornerRadius="2" HorizontalAlignment="Center"
+                    Margin="0,0,0,40" Background="{DynamicResource AccentBrush}" />
+            <TextBlock x:Name="Selected" Text="0" FontSize="300" FontWeight="Bold"
+                       TextAlignment="Center" HorizontalAlignment="Center"
+                       Foreground="{Binding TextColorBrush, Source={x:Static local:App.Settings}}" />
+        </StackPanel>
+    </Grid>
+</Window>

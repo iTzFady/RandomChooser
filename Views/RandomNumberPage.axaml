@@ -1,0 +1,56 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:RandomChooser"
+             x:Class="RandomChooser.Views.RandomNumberPage">
+
+    <Grid Margin="48">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <StackPanel x:Name="StartPanel" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Border Classes="card" Width="520" Padding="36">
+                <StackPanel HorizontalAlignment="Center">
+                    <Image Source="avares://RandomChooser/Assets/Images/dice.png"
+                           Width="96" Height="96" Margin="0,0,0,24" />
+                    <TextBlock Classes="title" Text="Random number" />
+                    <TextBlock Classes="caption" Text="Pick from your configured range" Margin="0,10,0,0" />
+                </StackPanel>
+            </Border>
+
+            <StackPanel Margin="0,28,0,0" Width="420">
+                <Button Content="Start random number" Height="62" FontSize="17" CornerRadius="12"
+                        HorizontalAlignment="Stretch" Margin="0,0,0,14" Click="Start_Click" />
+                <Button Classes="secondary" Content="Back home" Height="62" FontSize="17"
+                        CornerRadius="12" HorizontalAlignment="Stretch" Click="Home_Click" />
+            </StackPanel>
+        </StackPanel>
+
+        <Grid x:Name="PickPanel" Grid.Row="0" IsVisible="False">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <TextBlock x:Name="LabelText" Grid.Row="0" Classes="caption" FontSize="22"
+                       Text="The Winner is" Margin="0,24,0,0"
+                       Foreground="{Binding TextColorBrush, Source={x:Static local:App.Settings}}" />
+
+            <TextBlock x:Name="ChosenNumber" Grid.Row="1" Classes="result" Text="0"
+                       Foreground="{Binding TextColorBrush, Source={x:Static local:App.Settings}}" />
+
+            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center"
+                        VerticalAlignment="Center" Margin="0,0,0,48">
+                <Button Classes="icon" Content="⌂" ToolTip.Tip="Home" Click="Home_Click" />
+                <Button Classes="icon" Content="⚄" ToolTip.Tip="Pick again" Width="64" Height="64"
+                        CornerRadius="32" FontSize="24" Margin="12,0" Click="Pick_Click" />
+                <Button Classes="icon" Content="✕" ToolTip.Tip="Exit" Click="Exit_Click" />
+            </StackPanel>
+        </Grid>
+
+        <Button Grid.Row="1" Classes="icon" Content="⚙" ToolTip.Tip="Settings"
+                HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="Settings_Click" />
+    </Grid>
+</UserControl>

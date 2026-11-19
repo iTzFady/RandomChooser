@@ -1,0 +1,20 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="RandomChooser.Views.MessageWindow"
+        Title="Message"
+        Width="420" Height="230"
+        CanResize="False"
+        WindowStartupLocation="CenterOwner">
+
+    <Grid Margin="28" RowDefinitions="*,Auto">
+        <TextBlock x:Name="MessageText" Grid.Row="0" FontSize="16"
+                   TextWrapping="Wrap" VerticalAlignment="Center"
+                   HorizontalAlignment="Center" TextAlignment="Center" />
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Spacing="12">
+            <Button x:Name="CancelButton" Classes="secondary" Content="Cancel" Width="100"
+                    Click="Cancel_Click" />
+            <Button x:Name="OkButton" Content="OK" Width="100" Click="Ok_Click" />
+        </StackPanel>
+    </Grid>
+</Window>

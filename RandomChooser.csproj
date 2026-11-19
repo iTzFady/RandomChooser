@@ -2,87 +2,38 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net9.0-windows</TargetFramework>
+    <TargetFramework>net9.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UseWPF>true</UseWPF>
-    <UseWindowsForms>false</UseWindowsForms>
+    <AssemblyName>RandomChooser</AssemblyName>
+    <RootNamespace>RandomChooser</RootNamespace>
     <ApplicationIcon>Assets\Icons\app.ico</ApplicationIcon>
-
-  <AssemblyTitle>Random Chooser</AssemblyTitle>
-  <Description>This is a Random Chooser Applicationm, Easy to use, Expected to be Updated Soon.</Description>
-  <Company>St.Mary  St.Paul</Company>
-  <Product>Random Chooser</Product>
-  <Version>1.0.0.0</Version>
-  <FileVersion>1.0.0.0</FileVersion>
-  <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-
-
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Assets\Fonts\Font Awesome 6 Free Regular.otf" />
-    <None Remove="Assets\Icons\app.ico" />
-    <None Remove="Assets\Icons\color-icon.png" />
-    <None Remove="Assets\Icons\monitors-icon.png" />
-    <None Remove="Assets\Images\2monitors.png" />
-    <None Remove="Assets\Images\dice.png" />
-    <None Remove="Assets\Images\dictionary.png" />
-    <None Remove="Assets\Images\monitor.png" />
-    <None Remove="Assets\Images\moon.png" />
-    <None Remove="Assets\Images\night-sky.jpg" />
-    <None Remove="Assets\Images\sun.png" />
-    <None Remove="Assets\Images\Sunny.jpg" />
+    <Compile Remove="tests/**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Assets\Icons\app.ico" />
-    <Resource Include="Assets\Icons\color-icon.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Assets\Icons\monitors-icon.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-
-
-
-  <ItemGroup>
-    <EmbeddedResource Include="Assets\Audio\select.wav">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <Resource Include="Assets\Fonts\Font Awesome 6 Free Regular.otf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Assets\Fonts\Font Awesome 6 Free Solid.otf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Assets\Images\dice.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    <PackageReference Include="Avalonia" Version="11.3.0" />
+    <PackageReference Include="Avalonia.Desktop" Version="11.3.0" />
+    <PackageReference Include="Avalonia.Themes.Fluent" Version="11.3.0" />
+    <PackageReference Include="Avalonia.Fonts.Inter" Version="11.3.0" />
+    <PackageReference Include="Avalonia.Diagnostics" Version="11.3.0" Condition="'$(Configuration)' == 'Debug'" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Assets\Images\2monitors.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Assets\Images\dictionary.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Assets\Images\monitor.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Assets\Images\moon.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Assets\Images\sun.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    <AvaloniaResource Include="Assets\Images\*.png" />
+    <AvaloniaResource Include="Assets\Icons\*.png" />
+    <AvaloniaResource Include="Assets\Fonts\*.otf" />
+    <AvaloniaResource Include="Styles\*.axaml" />
+    <EmbeddedResource Include="Assets\Audio\select.wav" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="PixiEditor.ColorPicker" Version="3.4.2" />
-    <PackageReference Include="WpfScreenHelper" Version="2.1.1" />
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
+      <_Parameter1>RandomChooser.Tests</_Parameter1>
+    </AssemblyAttribute>
   </ItemGroup>
 
 </Project>

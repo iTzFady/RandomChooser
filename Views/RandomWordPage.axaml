@@ -1,0 +1,32 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="RandomChooser.Views.RandomWordPage">
+
+    <Grid Margin="48">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Border Classes="card" Width="520" Padding="36">
+                <StackPanel HorizontalAlignment="Center">
+                    <Image Source="avares://RandomChooser/Assets/Images/dictionary.png"
+                           Width="96" Height="96" Margin="0,0,0,24" />
+                    <TextBlock Classes="title" Text="Random word" />
+                    <TextBlock Classes="caption" Text="Let the list decide for you" Margin="0,10,0,0" />
+                </StackPanel>
+            </Border>
+
+            <StackPanel Margin="0,28,0,0" Width="420">
+                <Button Content="Start random word" Height="62" FontSize="17" CornerRadius="12"
+                        HorizontalAlignment="Stretch" Margin="0,0,0,14" Click="Start_Click" />
+                <Button Classes="secondary" Content="Back home" Height="62" FontSize="17"
+                        CornerRadius="12" HorizontalAlignment="Stretch" Click="Home_Click" />
+            </StackPanel>
+        </StackPanel>
+
+        <Button Grid.Row="1" Classes="icon" Content="⚙" ToolTip.Tip="Word settings"
+                HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="Settings_Click" />
+    </Grid>
+</UserControl>

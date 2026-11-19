@@ -40,7 +40,7 @@ namespace RandomChooser
                 throw new InvalidOperationException("Cannot change range after first use.");
             }
 
-            int rangeSize = _max - _min + 1;
+            long rangeSize = (long)_max - _min + 1;
 
             if (_used.Count >= rangeSize)
             {
@@ -50,7 +50,7 @@ namespace RandomChooser
             int value;
             do
             {
-                value = _rnd.Next(_min, _max + 1);
+                value = (int)_rnd.NextInt64(_min, (long)_max + 1);
             } while (_used.Contains(value));
 
             _used.Add(value);

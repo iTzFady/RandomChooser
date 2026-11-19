@@ -1,0 +1,107 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:RandomChooser"
+             x:Class="RandomChooser.Views.SettingsPage">
+
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+        <Grid MaxWidth="860" Margin="48">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <StackPanel Margin="0,12,0,28">
+                <TextBlock Text="Settings" Classes="title" HorizontalAlignment="Left" />
+                <TextBlock Text="Range and appearance" Classes="caption" HorizontalAlignment="Left"
+                           Margin="0,6,0,0" />
+            </StackPanel>
+
+            <Border Grid.Row="1" Classes="card">
+                <StackPanel>
+                    <TextBlock Text="NUMBER RANGE" Classes="section" Margin="0,0,0,16" />
+
+                    <Grid ColumnDefinitions="*,*">
+                        <StackPanel Grid.Column="0" Margin="0,0,12,0">
+                            <TextBlock Text="Min" Classes="caption" HorizontalAlignment="Left" Margin="0,0,0,8" />
+                            <TextBox x:Name="MinBox" Watermark="Minimum number" />
+                        </StackPanel>
+                        <StackPanel Grid.Column="1" Margin="12,0,0,0">
+                            <TextBlock Text="Max" Classes="caption" HorizontalAlignment="Left" Margin="0,0,0,8" />
+                            <TextBox x:Name="MaxBox" Watermark="Maximum number" />
+                        </StackPanel>
+                    </Grid>
+
+                    <Border Height="1" Background="{DynamicResource DividerBrush}" Margin="0,28" />
+
+                    <TextBlock Text="APPEARANCE" Classes="section" Margin="0,0,0,16" />
+
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,18">
+                        <StackPanel VerticalAlignment="Center">
+                            <TextBlock Text="Theme" Classes="section" />
+                            <TextBlock Text="Switch between light and dark UI" Classes="caption"
+                                       HorizontalAlignment="Left" />
+                        </StackPanel>
+                        <ToggleSwitch Margin="24,0,0,0" VerticalAlignment="Center"
+                                      OnContent="Dark" OffContent="Light"
+                                      IsChecked="{Binding IsDarkMode, Source={x:Static local:App.Settings}, Mode=TwoWay}" />
+                    </StackPanel>
+
+                    <Grid ColumnDefinitions="*,Auto" Margin="0,0,0,18">
+                        <StackPanel Grid.Column="0" VerticalAlignment="Center" Margin="0,0,20,0">
+                            <TextBlock Text="Volume" Classes="section" />
+                            <TextBlock Text="Selection sound level" Classes="caption"
+                                       HorizontalAlignment="Left" />
+                        </StackPanel>
+                        <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" Width="220">
+                            <Slider Minimum="0" Maximum="100" TickFrequency="5" IsSnapToTickEnabled="True"
+                                    Value="{Binding Volume, Source={x:Static local:App.Settings}, Mode=TwoWay}"
+                                    Width="170" />
+                            <TextBlock Width="44" TextAlignment="Right" VerticalAlignment="Center"
+                                       Text="{Binding Volume, Source={x:Static local:App.Settings}, StringFormat='{}{0}%'}" />
+                        </StackPanel>
+                    </Grid>
+
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,18">
+                        <Button Classes="swatch" VerticalAlignment="Center"
+                                Background="{Binding TextColorBrush, Source={x:Static local:App.Settings}}"
+                                Click="PickTextColor_Click" />
+                        <StackPanel Margin="14,0,0,0" VerticalAlignment="Center">
+                            <TextBlock Text="Text color" Classes="section" />
+                            <TextBlock Text="Color of the result on screen" Classes="caption"
+                                       HorizontalAlignment="Left" />
+                        </StackPanel>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,18">
+                        <Button Classes="swatch" VerticalAlignment="Center"
+                                Background="{Binding PageColorBrush, Source={x:Static local:App.Settings}}"
+                                Click="PickPageColor_Click" />
+                        <StackPanel Margin="14,0,0,0" VerticalAlignment="Center">
+                            <TextBlock Text="Background color" Classes="section" />
+                            <TextBlock Text="Color of the presentation screen" Classes="caption"
+                                       HorizontalAlignment="Left" />
+                        </StackPanel>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Margin="0,6,0,0">
+                        <StackPanel VerticalAlignment="Center">
+                            <TextBlock Text="Display mode" Classes="section" />
+                            <TextBlock Text="Show the result on the second monitor" Classes="caption"
+                                       HorizontalAlignment="Left" />
+                        </StackPanel>
+                        <ToggleSwitch x:Name="DisplayToggle" Margin="24,0,0,0" VerticalAlignment="Center"
+                                      OnContent="Extend" OffContent="Duplicate"
+                                      IsChecked="{Binding DisplayMode, Source={x:Static local:App.Settings}}" />
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right"
+                        Margin="0,24,0,8" Spacing="12">
+                <Button Classes="secondary" Content="Reset" Width="120" Click="Reset_Click" />
+                <Button Content="Save" Width="140" Click="Save_Click" />
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</UserControl>

@@ -1,37 +1,70 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.IO;
+﻿using System.Collections.ObjectModel;
 using System.Text.Json;
+using RandomChooser.Services;
 
-namespace RandomChooser
+namespace RandomChooser;
+
+public sealed class WordsList
 {
-    public class WordsList
+    public List<Item> Words { get; set; } = new();
+}
+
+public static class WordGen
+{
+    public static WordsList LoadWords()
     {
-        public List<Item> Words { get; set; } = new();
-    }
-    public static class WordGen {
-        private const string ConfigFile = "items.json";
-
-
-        public static WordsList LoadWords() {
-            if (!File.Exists(ConfigFile))
+        try
+        {
+            if (!File.Exists(AppSettings.WordsPath))
+            {
                 return new WordsList();
+            }
 
-            var json = File.ReadAllText(ConfigFile);
-            return JsonSerializer.Deserialize<WordsList>(json) ?? new WordsList();
+            var json = File.ReadAllText(AppSettings.WordsPath);
+            var list = JsonSerializer.Deserialize<WordsList>(json) ?? new WordsList();
+            return Normalize(list);
         }
-        public static void SaveWords(ObservableCollection<Item> items)
+        catch
         {
-            var config = new WordsList { Words = items.ToList() };
-            var json = JsonSerializer.Serialize(config, new JsonSerializerOptions { WriteIndented = true });
-            File.WriteAllText(ConfigFile, json);
+            return new WordsList();
         }
-        public static void ClearWords()
+    }
+
+    public static void SaveWords(ObservableCollection<Item> items)
+    {
+        Save(new WordsList { Words = items.ToList() });
+    }
+
+    public static bool TrySaveWords(ObservableCollection<Item> items, out string error)
+    {
+        try
         {
-            var emptyList = new WordsList { Words = new List<Item>() };
-            var json = JsonSerializer.Serialize(emptyList, new JsonSerializerOptions { WriteIndented = true });
-            File.WriteAllText(ConfigFile, json);
+            SaveWords(items);
+            error = string.Empty;
+            return true;
         }
+        catch (Exception)
+        {
+            error = "We couldn't save your word list. Check that your data folder is writable, then try again.";
+            return false;
+        }
+    }
+
+    private static WordsList Normalize(WordsList list)
+    {
+        list.Words ??= new List<Item>();
+        list.Words = list.Words
+            .Where(item => item is not null && !string.IsNullOrWhiteSpace(item.Name))
+            .Select(item => new Item { Name = item.Name.Trim() })
+            .ToList();
+        return list;
+    }
+
+    private static void Save(WordsList list)
+    {
+        var directory = Path.GetDirectoryName(AppSettings.WordsPath)!;
+        Directory.CreateDirectory(directory);
+        var json = JsonSerializer.Serialize(list, new JsonSerializerOptions { WriteIndented = true });
+        File.WriteAllText(AppSettings.WordsPath, json);
     }
 }

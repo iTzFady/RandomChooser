@@ -1,0 +1,91 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="RandomChooser.Views.TeamBuilderPage">
+
+    <Grid Margin="48" RowDefinitions="Auto,*,Auto">
+        <StackPanel Grid.Row="0" Spacing="6" Margin="0,0,0,24">
+            <TextBlock Classes="title" Text="Team Builder" HorizontalAlignment="Left" />
+            <TextBlock Classes="caption" Text="Shuffle names into balanced teams" HorizontalAlignment="Left" />
+        </StackPanel>
+
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+            <StackPanel Spacing="20" Margin="0,0,12,12">
+                <Border Classes="card">
+                    <StackPanel Spacing="16">
+                        <TextBlock Classes="section" Text="NAMES" />
+
+                        <TextBox x:Name="NamesBox" Height="170" AcceptsReturn="True"
+                                 TextWrapping="Wrap" FontSize="18" TextAlignment="Left"
+                                 Watermark="One name per line" VerticalContentAlignment="Top"
+                                 ScrollViewer.VerticalScrollBarVisibility="Auto" />
+
+                        <TextBlock Classes="caption" HorizontalAlignment="Left"
+                                   Text="Blank lines are ignored. Duplicate names are kept as separate people." />
+
+                        <Border Classes="divider" />
+
+                        <Grid ColumnDefinitions="*,Auto">
+                            <StackPanel Grid.Column="0" VerticalAlignment="Center" Margin="0,0,20,0">
+                                <TextBlock Classes="section" Text="Team count" />
+                                <TextBlock Classes="caption" HorizontalAlignment="Left"
+                                           Text="Automatic uses about the square root of the name count." />
+                            </StackPanel>
+                            <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="12"
+                                        VerticalAlignment="Center">
+                                <ToggleSwitch x:Name="AutoCountToggle" IsChecked="True"
+                                              OnContent="Automatic" OffContent="Manual" />
+                                <TextBox x:Name="TeamCountBox" Width="90" Text="3"
+                                         IsEnabled="False" Watermark="Auto" />
+                            </StackPanel>
+                        </Grid>
+
+                        <StackPanel Orientation="Horizontal" Spacing="12" Margin="0,6,0,0">
+                            <Button Content="Create teams" Click="Create_Click" />
+                            <Button Classes="secondary" Content="Clear" Click="Clear_Click" />
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+
+                <TextBlock x:Name="SummaryText" Classes="caption" HorizontalAlignment="Left"
+                           Text="Enter names, then create teams." />
+
+                <ItemsControl x:Name="TeamsList" ItemsSource="{Binding Teams}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border Classes="card team-card" Width="300" Margin="0,0,16,16">
+                                <StackPanel Spacing="10">
+                                    <StackPanel Spacing="4">
+                                        <TextBlock Classes="caption" HorizontalAlignment="Left"
+                                                   Text="Team name — click to edit" />
+                                        <TextBox Classes="team-name" Watermark="Type a team name"
+                                                 ToolTip.Tip="Click to rename this team"
+                                                 Text="{Binding Name, Mode=TwoWay}" />
+                                    </StackPanel>
+                                    <TextBlock Classes="caption" HorizontalAlignment="Left"
+                                               Text="{Binding Members.Count, StringFormat='{}{0} people'}" />
+                                    <ItemsControl ItemsSource="{Binding Members}">
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <Border Classes="member">
+                                                    <TextBlock Classes="member-text" Text="{Binding}" />
+                                                </Border>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+        </ScrollViewer>
+
+        <Button Grid.Row="2" Classes="icon" Content="⌂" ToolTip.Tip="Home"
+                HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Home_Click" />
+    </Grid>
+</UserControl>

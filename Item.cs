@@ -1,18 +1,25 @@
 ﻿using System.ComponentModel;
 
-namespace RandomChooser
-{
-    public class Item : INotifyPropertyChanged
-    {
-        private string name;
-        public string Name
-        {
-            get => name;
-            set { name = value; OnPropertyChanged(nameof(Name)); }
-        }
+namespace RandomChooser;
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged(string propName) =>
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
+public sealed class Item : INotifyPropertyChanged
+{
+    private string name = string.Empty;
+
+    public string Name
+    {
+        get => name;
+        set
+        {
+            if (name == value)
+            {
+                return;
+            }
+
+            name = value;
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Name)));
+        }
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
 }
